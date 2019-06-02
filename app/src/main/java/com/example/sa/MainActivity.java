@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+//123
 public class MainActivity extends AppCompatActivity {
     private TextView text;
     private String haha;
