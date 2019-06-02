@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="首頁" />
+        <item
+            android:id="@+id/nav_res"
+            android:title="預約掛號" />
+        <item
+            android:id="@+id/nav_schedule"
+            android:title="看診進度" />
+        <item
+            android:id="@+id/nav_docInfo"
+            android:title="醫師資訊" />
+        <item
+            android:id="@+id/nav_personal"
+            android:title="個人記錄" />
+        <item
+            android:id="@+id/nav_ask"
+            android:title="提問" />
+        <item
+            android:id="@+id/nav_question"
+            android:title="常見問題" />
+        <item
+            android:id="@+id/nav_hospital"
+            android:title="醫院資訊" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="登出" />
+    </group>
+
+
+
+</menu>
