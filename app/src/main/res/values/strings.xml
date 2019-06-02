@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SA</string>
+    <string name="app_name1">SA</string>
     <string-array name="division_select">
         <item>1</item>
         <item>2</item>
@@ -7,4 +7,39 @@
         <item>4</item>
 
     </string-array>
+
+    <string name="title_activity_reservation">Reservation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_test">test</string>
+
+    <string-array name="select_division_array">
+        <item>內科</item>
+        <item>外科</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="select_division_array2">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string name="title_activity_res">res</string>
 </resources>
