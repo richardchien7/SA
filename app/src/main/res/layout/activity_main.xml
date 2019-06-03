@@ -32,6 +32,7 @@
         android:textSize="30dp" />
 
     <EditText
+        android:id="@+id/account"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -42,6 +43,7 @@
         android:textSize="30dp" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
