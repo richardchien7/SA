@@ -26,5 +26,8 @@ public class MainActivity extends AppCompatActivity {
         text = (TextView) findViewById(R.id.text);
         text.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 
+
+
+
     }
 }
