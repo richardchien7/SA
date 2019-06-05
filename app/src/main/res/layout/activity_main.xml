@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
         android:textSize="30dp" />
 
     <EditText
+        android:id="@+id/id"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -42,14 +44,25 @@
         android:textSize="30dp" />
 
     <EditText
+        android:id="@+id/pw"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_username"
-        android:inputType="textPassword"
         android:hint="密碼"
+        android:inputType="textPassword"
         android:paddingLeft="10dp"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="忘記密碼?"
+        android:textColor="	#0000FF"
         android:textSize="30dp" />
 
     <LinearLayout
@@ -78,13 +91,5 @@
             android:padding="20dp"
             android:background="@drawable/bg_btn3"/>
     </LinearLayout>
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="忘記密碼?"
-        android:textSize="30dp"
-        android:textColor="	#0000FF"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"/>
+
 </LinearLayout>
