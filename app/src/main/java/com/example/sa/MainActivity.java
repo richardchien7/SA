@@ -18,7 +18,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private TextView text;
     private String haha;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

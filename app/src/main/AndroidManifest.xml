@@ -12,6 +12,7 @@
         <activity android:name=".res_time" />
         <activity android:name=".confirm" />
         <activity android:name=".sch" />
+        <activity android:name=".choose_division" />
         <activity android:name=".home" />
 
         <activity android:name=".MainActivity">
