@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".choose_division">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#508393"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/title_activity_test"
+            app:titleMarginStart="96dp" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--<TextView-->
+        <!--android:id="@+id/textView5"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="78dp"-->
+        <!--android:paddingTop="15dp"-->
+        <!--android:text="預 約 掛 號"-->
+        <!--android:textSize="35dp"-->
+        <!--app:layout_anchor="@+id/include"-->
+        <!--app:layout_anchorGravity="top|center" />-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="78dp">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textView2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="78dp"-->
+            <!--android:background="@color/cardview_shadow_start_color" />-->
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="請 選 擇 科 室"
+            android:fontFamily=""
+            android:textSize="30dp" />
+
+
+        <View
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@android:color/darker_gray" />
+
+        <Spinner
+            android:id="@+id/type"
+            android:layout_width="160dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:drawSelectorOnTop="true"
+            android:layout_alignParentRight="true"/>
+            <!--//android:entries="@array/select_division_array" -->
+
+        <Spinner
+            android:id="@+id/type2"
+            android:layout_width="160dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:drawSelectorOnTop="true"
+            android:layout_alignParentRight="true"/>
+            <!--android:entries="@array/select_division_array2"/>-->
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/shape_rectangle"
+            android:textColor="#FFFFFF"
+            android:text="確認" />
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
