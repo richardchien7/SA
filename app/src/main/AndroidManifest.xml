@@ -12,7 +12,6 @@
         <activity android:name=".res_time" />
         <activity android:name=".confirm" />
         <activity android:name=".sch" />
-        <activity android:name=".res" />
         <activity android:name=".home" />
 
         <activity android:name=".MainActivity">

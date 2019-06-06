@@ -30,7 +30,7 @@ public class home extends AppCompatActivity {
         res.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home.this,res.class);
+                Intent intent = new Intent(home.this,choose_division.class);
                 startActivity(intent);
 
             }
