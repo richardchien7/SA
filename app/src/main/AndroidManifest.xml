@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".hospital_information"></activity>
+        <activity android:name=".ShowReservation"></activity>
+        <activity android:name=".hospital_information" />
         <activity android:name=".register" />
         <activity android:name=".res_time" />
         <activity android:name=".confirm" />
