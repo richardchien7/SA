@@ -11,13 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".register"></activity>
+        <activity android:name=".hospital_information"></activity>
+        <activity android:name=".register" />
         <activity android:name=".res_time" />
         <activity android:name=".confirm" />
         <activity android:name=".sch" />
-        <activity android:name=".choose_division" />
-        <activity android:name=".home" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".choose_division" /> <!-- <activity android:name=".home" /> -->
+        <activity android:name=".home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

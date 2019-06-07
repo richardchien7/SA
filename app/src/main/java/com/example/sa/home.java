@@ -13,15 +13,15 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
-        Button res = (Button)findViewById(R.id.reserve);
+        final Button hospital_infor = (Button) findViewById(R.id.hospital_info);
+        Button res = (Button) findViewById(R.id.reserve);
         Button sch = (Button) findViewById(R.id.schedule);
 
 
         sch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home.this,sch.class);
+                Intent intent = new Intent(home.this, sch.class);
                 startActivity(intent);
 
             }
@@ -30,12 +30,18 @@ public class home extends AppCompatActivity {
         res.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home.this,choose_division.class);
+                Intent intent = new Intent(home.this, choose_division.class);
                 startActivity(intent);
 
             }
         });
-
+        hospital_infor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this, hospital_information.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
