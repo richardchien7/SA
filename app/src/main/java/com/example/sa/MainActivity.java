@@ -25,5 +25,25 @@ public class MainActivity extends AppCompatActivity {
         text = (TextView) findViewById(R.id.text);
         text.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 
+        Button login = (Button) findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,home.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+        Button register = (Button) findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,register.class);
+                startActivity(intent);
+
+            }
+        });
     }
 }
