@@ -15,6 +15,8 @@ public interface MyAPIService {
     //我的"hi"是資料表rec...Ze9是我特定資料的id api_key是我的api(不要動ouo)
     @GET("patient?view=Grid%20view&api_key=keycPi0WBRNXVMtiW")
     Call<patient> getPat();
+    @GET("patient/{id}?api_key=keycPi0WBRNXVMtiW") // 用{}表示路徑參數，@Path會將參數帶入至該位置
+    Call<Req> getPatientById(@Path("id") String id);
 
 //    @GET("reservation?view=Grid%20view&api_key=keycPi0WBRNXVMtiW")
 //    Call<reservation> getRes();
@@ -45,8 +47,10 @@ public interface MyAPIService {
 //    })
 //    Call<patient> postPat(@Body Req fields);
 //
-//    @DELETE("hi/recOzDwjVrTf2rj5b?api_key=keyKsJNFtZhy4rUjk")
-//    Call<patient> deletePat();
+//    @DELETE("reservation/{id}?api_key=keycPi0WBRNXVMtiW")
+//    Call<patient > deleteReservation();
+        @DELETE("reservation/{id}?api_key=keycPi0WBRNXVMtiW")
+        Call<patient> deleteReservation(@Path("id") String id);
 //
 //    @PATCH("hi/recOzDwjVrTf2rj5b?api_key=keyKsJNFtZhy4rUjk")
 //    @Headers({
