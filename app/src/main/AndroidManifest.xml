@@ -17,7 +17,9 @@
         <activity android:name=".res_time" />
         <activity android:name=".confirm" />
         <activity android:name=".sch" />
-        <activity android:name=".choose_division" /> <!-- <activity android:name=".home" /> -->
+        <activity android:name=".choose_division" />
+        <activity android:name=".fragment.ContainerActivity" />
+        <!-- <activity android:name=".home" /> -->
         <activity android:name=".home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
