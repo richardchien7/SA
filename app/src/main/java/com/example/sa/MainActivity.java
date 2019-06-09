@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 ProgressDialogUtil.showProgressDialog(MainActivity.this);
                 Intent intent = new Intent(MainActivity.this, register.class);
                 startActivity(intent);
-
+                ProgressDialogUtil.dismiss();
             }
         });
     }
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                         bundle.putString("patient_id", response.body().getId(j));//抓到亂碼id
                         intent.putExtras(bundle);//切換頁面同時把值給傳過去
                         startActivity(intent);
+                        ProgressDialogUtil.dismiss();
                         break;
                     }
                     j++;
