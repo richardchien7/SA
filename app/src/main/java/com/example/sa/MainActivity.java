@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ProgressDialogUtil.showProgressDialog(MainActivity.this);
                 String patient_id = id.getText().toString().trim();//trim去除空白 getText獲取id裡的值
                 String patient_password = password.getText().toString().trim();
                 getPatient(patient_id, patient_password);
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressDialogUtil.showProgressDialog(MainActivity.this);
                 Intent intent = new Intent(MainActivity.this, register.class);
                 startActivity(intent);
 
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (Successlogin == false) {
                     Toast.makeText(MainActivity.this, "帳號或密碼輸入錯誤!", Toast.LENGTH_SHORT).show();
+                    ProgressDialogUtil.dismiss();
                 }
             }
 
