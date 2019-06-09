@@ -9,6 +9,10 @@ public class Req {
     public Req(patient patient) {
         this.patient = patient;
     }
+    public Req(fields fields)
+    {
+        this.fields = fields;
+    }
 
     public fields getFields() {
         return fields;

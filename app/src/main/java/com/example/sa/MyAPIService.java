@@ -28,4 +28,11 @@ public interface MyAPIService {
     @DELETE("reservation/{id}?api_key=keycPi0WBRNXVMtiW")
     Call<patient> deleteReservation(@Path("id") String id);
 
+    @POST("patient?api_key=keycPi0WBRNXVMtiW")
+    @Headers({
+                    "Accept: application/json; charset=utf-8",
+                    "Content-Type: application/json; charset=utf-8"
+            })
+    Call<Req> PostPatient(@Body Req fields);
+
 }
