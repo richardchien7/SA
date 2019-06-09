@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,12 +23,13 @@ public class sch extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        Bundle bundle = getIntent().getExtras();
+        String patient_id = bundle.getString("patient_id");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sch);
         listView = (ListView) findViewById(R.id.lv1);
-        getPatinetById("recIV1uJmj6n4lakR");
+        getPatinetById(patient_id);
 
     }
 
@@ -51,9 +55,29 @@ public class sch extends AppCompatActivity {
                         data2[j][2] = "下午診";
                     else if (period == 2)
                         data2[j][2] = "夜間診";
-                    data2[j][3] = response.body().getFields().getVisit_date()[j];
+                    String date = response.body().getFields().getVisit_date()[j];
+                    data2[j][3] = date;
                     data2[j][4] = "10";
-                    data2[j][5] = "5";
+
+                    //定義好時間字串的格式
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+                    //抓到今天日期
+                    Date dt = new Date();
+
+                    //將日期的形式轉換為 年-月-日
+                    String dts =sdf.format(dt);
+
+                    if(date.compareTo(dts) < 0)
+                    {
+                       data2[j][5] = "看診日期已過!";
+                    }
+                    else if (date.compareTo(dts) > 0) {
+                        data2[j][5] = "看診日期未到!";
+                    }
+                    else {
+                        data2[j][5] = "目前看診進度 : 5";
+                    }
                     data2[j][6] = response.body().getFields().getDivision_name()[j] + "   診間為:" + response.body().getFields().getOffice()[j];
                     j++;
                 }
