@@ -25,7 +25,7 @@ public class sch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sch);
         listView = (ListView) findViewById(R.id.lv1);
-        getPatinetById("recX1VT648OkZzC6i");
+        getPatinetById("recIV1uJmj6n4lakR");
 
     }
 
