@@ -11,7 +11,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -36,13 +39,17 @@ public class register extends AppCompatActivity {
 
     private Button submit;
 
+
     private static String sex_tostring = "";
+
+    int getnum = 0;//幫助radiobutton
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        birthday = (EditText) findViewById(R.id.edit_birthday);
+        getnum = 0;
 
+        birthday = (EditText) findViewById(R.id.edit_birthday);
         name = (EditText) findViewById(R.id.edit_name);
         ID = (EditText) findViewById(R.id.edit_ID);
         password = (EditText) findViewById(R.id.edit_password);
@@ -60,6 +67,7 @@ public class register extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
                 sex_tostring = radioButton.getText().toString();
+                getnum++;
             }
         });
         birthday.setInputType(InputType.TYPE_NULL); //不显示系统输入键盘</span>
@@ -99,8 +107,9 @@ public class register extends AppCompatActivity {
 
                 if(p_password.equals(p_password_check))
                 {
-                    if(p_ID.equals("") || p_name.equals("") ||p_birthday == null || p_address.equals("") ||p_emergencyname.equals("") ||p_emergencyphone.equals("")  ||p_emergencyrelation.equals("") || sex_tostring.equals(""))
+                    if(p_ID.equals("") || p_name.equals("") ||p_birthday == null || p_address.equals("") ||p_emergencyname.equals("") ||p_emergencyphone.equals("")  ||p_emergencyrelation.equals("") || getnum == 0)
                     {
+                       
                         Toast.makeText(register.this,"有必填欄位未填!",Toast.LENGTH_SHORT).show();
                     }
 
