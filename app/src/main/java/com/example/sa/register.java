@@ -85,7 +85,14 @@ public class register extends AppCompatActivity {
 
                 if(p_password.equals(p_password_check))
                 {
-                    PostRegister(p_birthday, p_name, p_ID, p_password, p_password_check, p_address, p_phone, p_emergencyname, p_emergencyrelation, p_emergencyphone);
+                    if(p_ID.equals("") || p_name.equals("") ||p_birthday == null || p_address.equals("") ||p_emergencyname.equals("") ||p_emergencyphone.equals("")  ||p_emergencyrelation.equals(""))
+                    {
+                        Toast.makeText(register.this,"有必填欄位未填!",Toast.LENGTH_SHORT).show();
+                    }
+
+                    else{
+                            PostRegister(p_birthday, p_name, p_ID, p_password, p_password_check, p_address, p_phone, p_emergencyname, p_emergencyrelation, p_emergencyphone);
+                    }
                 }
                 else
                     {
