@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -29,9 +31,11 @@ public class register extends AppCompatActivity {
     private EditText Emergencyphone;
     static String p_birthday;
     private  MyAPIService myAPIService;
+    private RadioGroup sex;
 
     private Button submit;
 
+    private static String sex_tostring = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +52,15 @@ public class register extends AppCompatActivity {
         Emergencyrelation = (EditText) findViewById(R.id.edit_emergency_relationship);
         Emergencyphone = (EditText) findViewById(R.id.edit_emergency_phone);
         submit = findViewById(R.id.submit);
+        sex = (RadioGroup) findViewById(R.id.choose_sex);
 
+        sex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
+                sex_tostring = radioButton.getText().toString();
+            }
+        });
         birthday.setInputType(InputType.TYPE_NULL); //不显示系统输入键盘</span>
         birthday.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
@@ -82,16 +94,22 @@ public class register extends AppCompatActivity {
                 String p_emergencyname = Emergencyname.getText().toString().trim();
                 String p_emergencyrelation = Emergencyrelation.getText().toString().trim();
                 String p_emergencyphone = Emergencyphone.getText().toString().trim();
+                String p_choosesex = sex_tostring;
 
                 if(p_password.equals(p_password_check))
                 {
-                    if(p_ID.equals("") || p_name.equals("") ||p_birthday == null || p_address.equals("") ||p_emergencyname.equals("") ||p_emergencyphone.equals("")  ||p_emergencyrelation.equals(""))
+                    if(p_ID.equals("") || p_name.equals("") ||p_birthday == null || p_address.equals("") ||p_emergencyname.equals("") ||p_emergencyphone.equals("")  ||p_emergencyrelation.equals("") || sex_tostring.equals(""))
                     {
                         Toast.makeText(register.this,"有必填欄位未填!",Toast.LENGTH_SHORT).show();
                     }
 
                     else{
-                            PostRegister(p_birthday, p_name, p_ID, p_password, p_password_check, p_address, p_phone, p_emergencyname, p_emergencyrelation, p_emergencyphone);
+                        if(sex_tostring.equals("男")){
+                            sex_tostring = "M";
+                        }else{
+                            sex_tostring = "F";
+                        }
+                            PostRegister(p_birthday,sex_tostring, p_name, p_ID, p_password, p_password_check, p_address, p_phone, p_emergencyname, p_emergencyrelation, p_emergencyphone);
                     }
                 }
                 else
@@ -119,10 +137,10 @@ public class register extends AppCompatActivity {
         }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
 
     }
-    public void PostRegister(final String p_bithday, final String p_name, final String p_ID, final String p_password, final String p_password_check, final String p_address, final String p_phone, final String p_emergencyname, final String p_emergencyrelation, final String p_emergencyphone){
+    public void PostRegister(final String p_bithday,final String sex_tostring , final String p_name, final String p_ID, final String p_password, final String p_password_check, final String p_address, final String p_phone, final String p_emergencyname, final String p_emergencyrelation, final String p_emergencyphone){
 
         myAPIService = RetrofitManager.getInstance().getAPI();
-        Call<Req> call = myAPIService.PostPatient(new Req(new fields(p_ID, p_name, "M", p_birthday, p_phone, p_emergencyname, p_emergencyphone, p_emergencyrelation, p_password)));
+        Call<Req> call = myAPIService.PostPatient(new Req(new fields(p_ID, p_name, sex_tostring, p_birthday, p_phone, p_emergencyname, p_emergencyphone, p_emergencyrelation, p_password)));
         call.enqueue(new Callback<Req>() {
             @Override
             public void onResponse(Call<Req> call, Response<Req> response) {
