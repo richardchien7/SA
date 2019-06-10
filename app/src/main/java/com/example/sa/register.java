@@ -1,6 +1,7 @@
 package com.example.sa;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -109,6 +110,7 @@ public class register extends AppCompatActivity {
                         }else{
                             sex_tostring = "F";
                         }
+
                             PostRegister(p_birthday,sex_tostring, p_name, p_ID, p_password, p_password_check, p_address, p_phone, p_emergencyname, p_emergencyrelation, p_emergencyphone);
                     }
                 }
@@ -144,7 +146,12 @@ public class register extends AppCompatActivity {
         call.enqueue(new Callback<Req>() {
             @Override
             public void onResponse(Call<Req> call, Response<Req> response) {
+                ProgressDialogUtil.showProgressDialog(register.this);
                 Toast.makeText(register.this,"註冊成功!",Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(register.this, MainActivity.class);
+                startActivity(intent);
+
             }
 
             @Override

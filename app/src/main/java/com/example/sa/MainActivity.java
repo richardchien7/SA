@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ProgressDialogUtil.dismiss();
         text = (TextView) findViewById(R.id.text);
         text.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         id = (EditText) findViewById(R.id.account);
