@@ -1,6 +1,7 @@
 package com.example.sa;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
                     if (response.body().getFields(j).getId().equals(id) && response.body().getFields(j).getPassword().equals(password)) {
                         Successlogin = true;
                         Intent intent = new Intent(MainActivity.this, home.class);//成功後切換頁面
-                        Bundle bundle = new Bundle();
-                        bundle.putString("patient_id", response.body().getId(j));//抓到亂碼id
-                        intent.putExtras(bundle);//切換頁面同時把值給傳過去
+                        SharedPreferences sharedPreferences = getSharedPreferences("User" , MODE_PRIVATE);
+                        sharedPreferences.edit().putString("patient_id",response.body().getId(j)).apply();
                         startActivity(intent);
                         ProgressDialogUtil.dismiss();
                         break;

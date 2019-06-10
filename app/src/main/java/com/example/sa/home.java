@@ -13,8 +13,8 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Bundle bundle = getIntent().getExtras();
-        final String patient_id = bundle.getString("patient_id");
+
+
 
         final Button hospital_infor = (Button) findViewById(R.id.hospital_info);
         Button res = (Button) findViewById(R.id.reserve);
@@ -24,10 +24,8 @@ public class home extends AppCompatActivity {
         sch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle b = new Bundle();
-                b.putString("patient_id",patient_id);
+
                 Intent intent = new Intent(home.this, sch.class);
-                intent.putExtras(b);
                 startActivity(intent);
 
             }
