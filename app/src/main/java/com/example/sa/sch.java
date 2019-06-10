@@ -20,6 +20,7 @@ public class sch extends AppCompatActivity {
     private MyAPIService MyAPIService;
 
     private ListView listView;
+    static int Numbering = 5;
 
 
     @Override
@@ -41,6 +42,7 @@ public class sch extends AppCompatActivity {
             @Override
             public void onResponse(Call<Req> call, Response<Req> response) {
                 int count = 0;
+
                 if(response.body().getFields().getRes_id() != null) {
                     int len = response.body().getFields().getRes_id().length;
                     String[][] data2 = new String[len][7];
@@ -74,13 +76,15 @@ public class sch extends AppCompatActivity {
                         } else if (date.compareTo(dts) > 0) {
                             data2[j][5] = "看診日期未到!";
                         } else {
-                            data2[j][5] = "目前看診進度 : 5";
+                            data2[j][5] = "目前看診進度為 :"+Numbering;
                         }
-                        data2[j][6] = response.body().getFields().getDivision_name()[j] + "   診間為:" + response.body().getFields().getOffice()[j];
+                        data2[j][6] = response.body().getFields().getDivision_name()[j] + "  診間:" + response.body().getFields().getOffice()[j];
                         j++;
                     }
-                    if (data2.length > 0)
+                    if (data2.length > 0){
                         listView.setAdapter(new MyListAdapter(data2, sch.this, count));
+                        Numbering++;
+                    }
                 }
             }
 
@@ -131,11 +135,11 @@ public class sch extends AppCompatActivity {
         ad.show();
     }
 
-    public void show(final boolean b) {
+    public void show(final boolean b,final String id) {
         if (b) {
-            Toast.makeText(sch.this, "開啟看診預先提醒", Toast.LENGTH_SHORT).show();
+            Toast.makeText(sch.this, id+"開啟看診預先提醒", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(sch.this, "關閉看診預先提醒", Toast.LENGTH_SHORT).show();
+            Toast.makeText(sch.this, id+"關閉看診預先提醒", Toast.LENGTH_SHORT).show();
         }
     }
 

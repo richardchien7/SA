@@ -82,9 +82,9 @@ public class MyListAdapter extends BaseAdapter {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    schh.show(true);
+                    schh.show(true,data[position][6]);
                 } else {
-                    schh.show(false);
+                    schh.show(false,data[position][6]);
                 }
 
 
