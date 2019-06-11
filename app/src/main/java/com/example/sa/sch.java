@@ -164,7 +164,7 @@ public class sch extends AppCompatActivity {
 
 
     private void refresh() {
-        //先結束此畫面，並跳回原畫面
+        //先結束此畫面，並跳回原畫面 
         finish();
         Intent intent = new Intent(sch.this, sch.class);
         startActivity(intent);
