@@ -17,12 +17,24 @@ public class fields {
     private String emergency_relation;
     private String password;
     private String[] res_id;
+
+    public String[] getReservation() {
+        return reservation;
+    }
+
+    private String[] reservation;
     private String[] doctor_name;
     private String[] visit_date;
     private int[] visit_period;
     private String[] office;
     private String[] division_name;
     private String[] division_department;
+
+    public int[] getNumbering() {
+        return Numbering;
+    }
+
+    private int[] Numbering;
 
     public fields(String id, String name, String gender, String birthday, String phone, String emergency_name, String emergency_phone, String emergency_relation, String password) {
         this.id = id;

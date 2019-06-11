@@ -44,13 +44,20 @@ public class sch extends AppCompatActivity {
                 int count = 0;
 
                 if(response.body().getFields().getRes_id() != null) {
+                    //回傳預約紀錄筆數
                     int len = response.body().getFields().getRes_id().length;
-                    String[][] data2 = new String[len][7];
+                    //用此筆數給陣列設定大小
+                    String[][] data2 = new String[len][8];
                     count = len;
                     int j = 0;
                     while (j < len) {
+                        //持續將資料加入陣列
+
+                        //預約紀錄的亂碼ID
                         data2[j][0] = response.body().getFields().getRes_id()[j];
+                        //醫生的姓名
                         data2[j][1] = response.body().getFields().getDoctor_name()[j];
+                        //判斷時段
                         int period = response.body().getFields().getVisit_period()[j];
                         if (period == 0)
                             data2[j][2] = "上午診";
@@ -58,9 +65,11 @@ public class sch extends AppCompatActivity {
                             data2[j][2] = "下午診";
                         else if (period == 2)
                             data2[j][2] = "夜間診";
+                        //看診日期
                         String date = response.body().getFields().getVisit_date()[j];
                         data2[j][3] = date;
-                        data2[j][4] = "10";
+                        //預約紀錄
+                        data2[j][4] = response.body().getFields().getNumbering()[j]+"";
 
                         //定義好時間字串的格式
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -78,9 +87,13 @@ public class sch extends AppCompatActivity {
                         } else {
                             data2[j][5] = "目前看診進度為 :"+Numbering;
                         }
-                        data2[j][6] = response.body().getFields().getDivision_name()[j] + "  診間:" + response.body().getFields().getOffice()[j];
+                        //科室名稱
+                        data2[j][6] = response.body().getFields().getDivision_name()[j];
+                        //診間
+                        data2[j][7] = response.body().getFields().getOffice()[j];
                         j++;
                     }
+                    //若無看診紀錄 則不顯示
                     if (data2.length > 0){
                         listView.setAdapter(new MyListAdapter(data2, sch.this, count));
                         Numbering++;
@@ -94,7 +107,7 @@ public class sch extends AppCompatActivity {
         });
     }
 
-
+    //利用唯一亂碼ID 刪除此筆預約紀錄
     public void deleteReservation(final String id) {
         MyAPIService = RetrofitManager.getInstance().getAPI();
         Call<patient> call = MyAPIService.deleteReservation(id);
@@ -110,15 +123,17 @@ public class sch extends AppCompatActivity {
         });
     }
 
-
+    //點擊取消按鈕後，做的後續動作
     public void myDialog(final String id) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //跳出提醒視窗
         builder.setMessage("確定是否刪除此筆預約紀錄?")
                 .setPositiveButton("是", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //如點選是，則刪除此筆紀錄並跳出通知，並重新整理此頁面
                         deleteReservation(id);
                         Toast.makeText(sch.this, "預約紀錄刪除成功!", Toast.LENGTH_SHORT).show();
                         refresh();
@@ -128,6 +143,7 @@ public class sch extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //如點選否，則不做動作，並跳出通知
                         Toast.makeText(sch.this, "預約紀錄刪除失敗!", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -135,16 +151,20 @@ public class sch extends AppCompatActivity {
         ad.show();
     }
 
-    public void show(final boolean b,final String id) {
+    public void show(final boolean b,final String office,final String doctor) {
+        //如果開啟提醒
         if (b) {
-            Toast.makeText(sch.this, id+"開啟看診預先提醒", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(sch.this, id+"關閉看診預先提醒", Toast.LENGTH_SHORT).show();
+            Toast.makeText(sch.this, "醫師 :"+doctor+" 診間為:"+office+" 開啟看診預先提醒", Toast.LENGTH_SHORT).show();
+        }
+        //如關閉提醒
+        else {
+            Toast.makeText(sch.this, "醫師 :"+doctor+" 診間為:"+office+" 關閉看診預先提醒", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     private void refresh() {
+        //先結束此畫面，並跳回原畫面
         finish();
         Intent intent = new Intent(sch.this, sch.class);
         startActivity(intent);
