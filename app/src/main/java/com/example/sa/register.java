@@ -109,7 +109,7 @@ public class register extends AppCompatActivity {
                 {
                     if(p_ID.equals("") || p_name.equals("") ||p_birthday == null || p_address.equals("") ||p_emergencyname.equals("") ||p_emergencyphone.equals("")  ||p_emergencyrelation.equals("") || getnum == 0)
                     {
-                       
+
                         Toast.makeText(register.this,"有必填欄位未填!",Toast.LENGTH_SHORT).show();
                     }
 
