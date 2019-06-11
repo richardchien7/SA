@@ -154,17 +154,17 @@ public class sch extends AppCompatActivity {
     public void show(final boolean b,final String office,final String doctor) {
         //如果開啟提醒
         if (b) {
-            Toast.makeText(sch.this, "醫師 :"+doctor+" 診間為:"+office+" 開啟看診預先提醒", Toast.LENGTH_SHORT).show();
+            Toast.makeText(sch.this, "醫師 :"+doctor+" 診間為:"+office+"\n開啟看診預先提醒", Toast.LENGTH_SHORT).show();
         }
         //如關閉提醒
         else {
-            Toast.makeText(sch.this, "醫師 :"+doctor+" 診間為:"+office+" 關閉看診預先提醒", Toast.LENGTH_SHORT).show();
+            Toast.makeText(sch.this, "醫師 :"+doctor+" 診間為:"+office+"\n關閉看診預先提醒", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     private void refresh() {
-        //先結束此畫面，並跳回原畫面 
+        //先結束此畫面，並跳回原畫面
         finish();
         Intent intent = new Intent(sch.this, sch.class);
         startActivity(intent);

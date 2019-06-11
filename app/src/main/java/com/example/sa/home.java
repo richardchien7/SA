@@ -19,6 +19,7 @@ public class home extends AppCompatActivity {
         final Button hospital_infor = (Button) findViewById(R.id.hospital_info);
         Button res = (Button) findViewById(R.id.reserve);
         Button sch = (Button) findViewById(R.id.schedule);
+        Button individual = (Button)findViewById(R.id.individual);
 
 
         sch.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,14 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(home.this, hospital_information.class);
                 startActivity(intent);
+            }
+        });
+        individual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this,personalPage.class);
+                startActivity(intent);
+
             }
         });
 
