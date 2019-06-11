@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
     <TableLayout
-        android:id="@+id/table"
+        android:id="@+id/table1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="*"
@@ -49,7 +49,7 @@
             <TextView
                 android:padding="8dp"
                 android:layout_width="1dp"
-                android:text="晚"
+                android:text="晚上"
                 android:textSize="9pt"
                 android:gravity="center"/>
         </TableRow>

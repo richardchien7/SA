@@ -74,14 +74,14 @@ public class choose_division extends AppCompatActivity
         context = this;
 
         //程式剛啟始時載入第一個下拉選單
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, type);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, type);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp = (Spinner) findViewById(R.id.type);
         sp.setAdapter(adapter);
         sp.setOnItemSelectedListener(selectListener);
 
         //因為下拉選單第一個為茶類，所以先載入茶類群組進第二個下拉選單
-        adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, internal);
+        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, internal);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp2 = (Spinner) findViewById(R.id.type2);
         sp2.setAdapter(adapter2);
@@ -93,6 +93,7 @@ public class choose_division extends AppCompatActivity
                 //拿到被选择项的值
                 str = (String) sp2.getSelectedItem();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // TODO Auto-generated method stub
@@ -113,10 +114,25 @@ public class choose_division extends AppCompatActivity
 //                startActivity(intent);
 //
 //            }
-//        });
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.app_bar_choose_division);
+        mBtn = (Button) findViewById(R.id.confirm);
+        mBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(choose_division.this, confirm.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
+                //Bundle bundle = new Bundle();
+                //bundle.putString("division", str);
+                //intent.putExtras(bundle);
+                startActivity(intent);
+            }
+
+
+        });
 
     }
+
 
     //第一個下拉類別的監看式
 
@@ -186,4 +202,7 @@ public class choose_division extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
 }

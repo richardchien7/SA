@@ -17,6 +17,9 @@ public interface MyAPIService {
     //  資料表/顯示條件/金鑰  傳回所有病人紀錄
     @GET("patient?view=Grid%20view&api_key=keycPi0WBRNXVMtiW")
     Call<patient> getPat();
+    //  資料表/顯示條件/金鑰  傳回所有預約紀錄
+    @GET("reservation?view=Grid%20view&api_key=keycPi0WBRNXVMtiW")
+    Call<patient> getReservation();
     // 資料表/病人唯一ID/金鑰   傳回此病人之紀錄
     @GET("patient/{id}?api_key=keycPi0WBRNXVMtiW") // 用{}表示路徑參數，@Path會將參數帶入至該位置
     Call<Req> getPatientById(@Path("id") String id);
@@ -39,8 +42,20 @@ public interface MyAPIService {
 
 
 
+    @POST("reservation?api_key=keycPi0WBRNXVMtiW")
+    @Headers({
+            "Accept: application/json; charset=utf-8",
+            "Content-Type: application/json; charset=utf-8"
+    })
+    Call<Req> PostReservation(@Body Req fields);
 
 
 
+    @POST("patient?api_key=keycPi0WBRNXVMtiW")
+    @Headers({
+                    "Accept: application/json; charset=utf-8",
+                    "Content-Type: application/json; charset=utf-8"
+            })
+    Call<Req> PostPatient(@Body Req fields);
 
 }

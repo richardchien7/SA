@@ -14,27 +14,48 @@ public class fields {
     private String phone;
     private String emergency_name;
     private String emergency_phone;
-    private String emergency_relationship;
+    private String emergency_relation;
     private String password;
     private String[] res_id;
+    private String[] reservation;
+
     private String[] doctor_name;
     private String[] visit_date;
     private int[] visit_period;
     private String[] office;
     private String[] division_name;
     private String[] division_department;
+    private int[] Numbering;
 
-
+    public fields(String id, String name, String gender, String birthday, String phone, String emergency_name, String emergency_phone, String emergency_relation, String password) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.phone = phone;
+        this.emergency_name = emergency_name;
+        this.emergency_phone = emergency_phone;
+        this.emergency_relation = emergency_relation;
+        this.password = password;
+    }
+    public int[] getNumbering() {
+        return Numbering;
+    }
 
     public String[] getDivision_department() {
         return division_department;
     }
+
     public String[] getDivision_name() {
         return division_name;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String[] getReservation() {
+        return reservation;
     }
 
     public String getGender() {
@@ -58,7 +79,7 @@ public class fields {
     }
 
     public String getEmergency_relationship() {
-        return emergency_relationship;
+        return emergency_relation;
     }
 
     public String getPassword() {
@@ -85,5 +106,44 @@ public class fields {
         return office;
     }
 
+
+
+    //reservation
+
+    private String[] visit_time_id;
+    private String[] doctor;
+    private String[] patient_id;
+    private int Number;
+    private String condition ;
+
+
+    public String[] getVisit_time_id() {
+        return visit_time_id;
+    }
+
+    public String[] getDoctor() { return doctor; }
+
+    public int getNumber() {
+        return Number;
+    }
+
+
+
+
+    public fields(String[] doctor_id, String[] visit_time_id, String[] patient_id, int number, String condition) {
+        this.doctor = doctor_id;
+        this.visit_time_id = visit_time_id;
+        this.patient_id = patient_id;
+        this.Number = number;
+        this.condition = condition;
+    }
+
+
+    public fields(String[] doctor_id, String[] visit_time_id, String[] patient_id, String condition) {
+        this.doctor = doctor_id;
+        this.visit_time_id = visit_time_id;
+        this.patient_id = patient_id;
+        this.condition = condition;
+    }
 
 }
