@@ -38,6 +38,7 @@ public class fields {
         this.emergency_relation = emergency_relation;
         this.password = password;
     }
+
     public int[] getNumbering() {
         return Numbering;
     }
@@ -138,12 +139,5 @@ public class fields {
         this.condition = condition;
     }
 
-
-    public fields(String[] doctor_id, String[] visit_time_id, String[] patient_id, String condition) {
-        this.doctor = doctor_id;
-        this.visit_time_id = visit_time_id;
-        this.patient_id = patient_id;
-        this.condition = condition;
-    }
 
 }

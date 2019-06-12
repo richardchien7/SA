@@ -20,6 +20,7 @@ public class home extends AppCompatActivity {
         Button res = (Button) findViewById(R.id.reserve);
         Button sch = (Button) findViewById(R.id.schedule);
         Button individual = (Button)findViewById(R.id.individual);
+        Button aboutsystem = (Button) findViewById(R.id.system_info);
 
 
         sch.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +59,14 @@ public class home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(home.this,personalPage.class);
+                startActivity(intent);
+
+            }
+        });
+        aboutsystem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this,about_system.class);
                 startActivity(intent);
 
             }

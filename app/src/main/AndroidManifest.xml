@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".hospital_ask"></activity>
+        <activity android:name=".about_system"></activity>
+        <activity android:name=".hospital_ask" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,15 +28,12 @@
         <activity android:name=".sch" />
         <activity android:name=".choose_division" />
         <activity android:name=".personalPage" />
-        <activity android:name=".medicineRemind"/>
-        <activity android:name=".reviewRemind"/>
-        <activity android:name=".conditionRecord"/>
-        <activity android:name=".personalDocument"/>
-        <activity android:name=".fragment.ContainerActivity" />
-        <!-- <activity android:name=".home" /> -->
-        <activity android:name=".home">
-        </activity>
-        
+        <activity android:name=".medicineRemind" />
+        <activity android:name=".reviewRemind" />
+        <activity android:name=".conditionRecord" />
+        <activity android:name=".personalDocument" />
+        <activity android:name=".fragment.ContainerActivity" /> <!-- <activity android:name=".home" /> -->
+        <activity android:name=".home"></activity>
     </application>
 
 </manifest>

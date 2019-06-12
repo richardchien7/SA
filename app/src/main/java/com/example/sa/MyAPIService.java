@@ -31,13 +31,7 @@ public interface MyAPIService {
     @DELETE("reservation/{id}?api_key=keycPi0WBRNXVMtiW")
     Call<patient> deleteReservation(@Path("id") String id);
 
-    // 取得已登入病人id
-    @GET("patient/{id}?api_key=keycPi0WBRNXVMtiW") // 用{}表示路徑參數，@Path會將參數帶入至該位置
-    Call<Con> getConById(@Path("id") String id);
 
-    //回傳預約資料到資料庫
-    @POST("reservation/{id}?api_key=keycPi0WBRNXVMtiW")
-    Call<Con> postRes(@Body Con confirms);
 
 
 
@@ -47,7 +41,7 @@ public interface MyAPIService {
             "Accept: application/json; charset=utf-8",
             "Content-Type: application/json; charset=utf-8"
     })
-    Call<Req> PostReservation(@Body Req fields);
+    Call<Req> PostReservation(@Body Req Con);
 
 
 

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".about_system">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        tools:ignore="MissingConstraints">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:background="#508393"
+            app:title="關 於 系 統"
+            app:titleMarginStart="150dp"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="534dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/bt_border1"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="369dp"
+                android:layout_height="78dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="8dp"
+                android:text="輔大醫院醫療小管家提供以下服務項目 :"
+                android:textColor="#F80F0B0B"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+                app:layout_constraintHorizontal_bias="0.486"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+                app:layout_constraintVertical_bias="0.018" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="344dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="1.認識輔大醫院、就醫指南和交通指引 :   讓您到院前能多一分了解輔大醫院。   "
+                android:textColor="#F80F0B0B"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="342dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="2.預約掛號 : 讓您利用行動電話就能方便查看各科醫師門診時間，並直接辦理掛號。"
+                android:textColor="#F80F0B0B"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:layout_constraintVertical_bias="0.033" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="343dp"
+                android:layout_height="114dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="3.看診進度 :可以查看自己的預約紀錄，當天可以查看看診進度。也可直接從此頁面取消預約，當天之看診無法做取消。 此功能也包含了看診提醒，您可以自行設定希望前幾號時做提醒。。"
+                android:textColor="#F80F0B0B"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:layout_constraintVertical_bias="0.228" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="343dp"
+                android:layout_height="161dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="4.個人紀錄 : 在個人記錄當中有三個小功能。(1)服藥提醒 : 看診結束後，系統將會匯入藥單，可自行設定是否要做提醒，及設定提醒時間。(2)複診提醒 : 若有需要複診，系統自動帶入。也可自行設定提醒。    (3)病情紀錄 : 類似於日記，可以記錄您的血壓， 血糖等。"
+                android:textColor="#F80F0B0B"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:layout_constraintVertical_bias="0.68" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
+

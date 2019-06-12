@@ -60,8 +60,11 @@ public class choose_division extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        Button bt = findViewById(R.id.confirm);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -115,21 +118,16 @@ public class choose_division extends AppCompatActivity
 //
 //            }
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.app_bar_choose_division);
-        mBtn = (Button) findViewById(R.id.confirm);
-        mBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(choose_division.this, confirm.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
-                //Bundle bundle = new Bundle();
-                //bundle.putString("division", str);
-                //intent.putExtras(bundle);
-                startActivity(intent);
-            }
+            bt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(choose_division.this,confirm.class);
+                    startActivity(intent);
+                }
+            });
 
 
-        });
+
 
     }
 

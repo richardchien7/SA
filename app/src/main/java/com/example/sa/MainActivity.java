@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView text;
     private MyAPIService MyAPIService;
     private EditText id, password;
+    private String patientname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, home.class);//成功後切換頁面
                         SharedPreferences sharedPreferences = getSharedPreferences("User" , MODE_PRIVATE);
                         sharedPreferences.edit().putString("patient_id",response.body().getId(j)).apply();
+
+                        patientname = response.body().getFields(j).getName();
+                        SharedPreferences sharedPreferences1 = getSharedPreferences("User" , MODE_PRIVATE);
+                        sharedPreferences1.edit().putString("patient_name",patientname).apply();
+
                         startActivity(intent);
                         ProgressDialogUtil.dismiss();
                         break;

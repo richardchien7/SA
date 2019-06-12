@@ -14,6 +14,10 @@ public class Req {
         this.fields = fields;
     }
 
+
+
+
+
     public fields getFields() {
         return fields;
     }
