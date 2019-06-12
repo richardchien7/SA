@@ -159,17 +159,20 @@ public class choose_division extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_home) {
-
+            Intent intent = new Intent(choose_division.this, home.class);
+            startActivity(intent);
         } else if (id == R.id.nav_res) {
-
+            Intent intent = new Intent(choose_division.this, choose_division.class);
+            startActivity(intent);
         } else if (id == R.id.nav_schedule) {
-
+            Intent intent = new Intent(choose_division.this, sch.class);
+            startActivity(intent);
         } else if (id == R.id.nav_docInfo) {
-
+//            Intent intent = new Intent(choose_division.this,home.class);  第三優先
+//            startActivity(intent);
         } else if (id == R.id.nav_personal) {
-
+            Intent intent = new Intent(choose_division.this, personalPage.class);
+            startActivity(intent);
         } else if (id == R.id.nav_ask) {
 
         } else if (id == R.id.nav_question) {

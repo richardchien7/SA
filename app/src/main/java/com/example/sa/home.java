@@ -22,13 +22,12 @@ public class home extends AppCompatActivity {
         Button individual = (Button)findViewById(R.id.individual);
 
 
+
         sch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(home.this, sch.class);
                 startActivity(intent);
-
             }
         });
 
@@ -37,9 +36,9 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(home.this, choose_division.class);
                 startActivity(intent);
-
             }
         });
+
         hospital_infor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +61,8 @@ public class home extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 
