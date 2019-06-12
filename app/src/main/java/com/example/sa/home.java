@@ -19,15 +19,14 @@ public class home extends AppCompatActivity {
         final Button hospital_infor = (Button) findViewById(R.id.hospital_info);
         Button res = (Button) findViewById(R.id.reserve);
         Button sch = (Button) findViewById(R.id.schedule);
+        Button per = (Button) findViewById(R.id.individual);
 
 
         sch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(home.this, sch.class);
                 startActivity(intent);
-
             }
         });
 
@@ -36,9 +35,9 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(home.this, choose_division.class);
                 startActivity(intent);
-
             }
         });
+
         hospital_infor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +45,15 @@ public class home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        per.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this,personalPage.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 

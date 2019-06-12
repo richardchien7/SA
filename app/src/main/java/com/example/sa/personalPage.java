@@ -41,7 +41,7 @@ public class personalPage extends AppCompatActivity
         med_remind.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(personalPage.this,medicineRemind.class);
+                Intent intent = new Intent(personalPage.this, medicineRemind.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +50,7 @@ public class personalPage extends AppCompatActivity
         rev_remind.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(personalPage.this,reviewRemind.class);
+                Intent intent = new Intent(personalPage.this, reviewRemind.class);
                 startActivity(intent);
             }
         });
@@ -59,7 +59,7 @@ public class personalPage extends AppCompatActivity
         con_record.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(personalPage.this,conditionRecord.class);
+                Intent intent = new Intent(personalPage.this, conditionRecord.class);
                 startActivity(intent);
             }
         });
@@ -68,7 +68,7 @@ public class personalPage extends AppCompatActivity
         per_document.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(personalPage.this,personalDocument.class);
+                Intent intent = new Intent(personalPage.this, personalDocument.class);
                 startActivity(intent);
             }
         });
@@ -115,11 +115,14 @@ public class personalPage extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            Intent intent = new Intent(personalPage.this, home.class);
+            startActivity(intent);
         } else if (id == R.id.nav_res) {
-
+            Intent intent = new Intent(personalPage.this, choose_division.class);
+            startActivity(intent);
         } else if (id == R.id.nav_schedule) {
-
+            Intent intent = new Intent(personalPage.this, sch.class);
+            startActivity(intent);
         } else if (id == R.id.nav_docInfo) {
 
         } else if (id == R.id.nav_hospital) {
@@ -127,7 +130,8 @@ public class personalPage extends AppCompatActivity
         } else if (id == R.id.nav_ask) {
 
         } else if (id == R.id.nav_personal) {
-
+            Intent intent = new Intent(personalPage.this, personalPage.class);
+            startActivity(intent);
         } else if (id == R.id.nav_question) {
 
         } else if (id == R.id.nav_logout) {
