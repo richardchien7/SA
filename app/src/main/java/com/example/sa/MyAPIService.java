@@ -41,7 +41,7 @@ public interface MyAPIService {
             "Accept: application/json; charset=utf-8",
             "Content-Type: application/json; charset=utf-8"
     })
-    Call<Req> PostReservation(@Body Req Con);
+    Call<Req> PostReservation(@Body Req fields);
 
 
 
