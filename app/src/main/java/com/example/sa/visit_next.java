@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -22,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class visit extends AppCompatActivity {
+public class visit_next extends AppCompatActivity {
 
     private MyAPIService myAPIService;
     private TextView Mon,Tue,Wed,Thu,Fri;
@@ -30,7 +29,7 @@ public class visit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visit);
+        setContentView(R.layout.activity_visit_next);
 
         Bundle bundle0311 =this.getIntent().getExtras();
         final String choose = bundle0311.getString("division");
@@ -44,32 +43,40 @@ public class visit extends AppCompatActivity {
         Date dt = new Date();
         //抓到今天的星期
         int week_td = dt.getDay();
+        //計算下一週從哪一天開始
+        int week_start = 7-week_td;
 
         //將日期的形式轉換為 年-月-日
         String dts =sdf.format(dt);
 
         //把date轉為Calendar型態，並加上5天， 用來限制抓下來的資料
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(dt);
-        calendar.add(Calendar.DATE, 5);
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setTime(dt);
+        calendar1.add(Calendar.DATE, week_start);//下一週開始日期
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.setTime(dt);
+        calendar2.add(Calendar.DATE, week_start+5);//下一週結束日期
 
         //將Calendar轉換回Date
-        Date tdt =calendar.getTime();
+        Date tdt1 =calendar1.getTime();
+        Date tdt2 =calendar2.getTime();
 
         //將加五天後的日期轉換為 年-月-日
-        String wa =sdf.format(tdt);
+        String wa1 =sdf.format(tdt1);
+        String wa2 =sdf.format(tdt2);
 
-       // String choose = "心臟內科";
+
         //將兩天日期放進函式
-        getVis(dt,tdt,choose,week_td);
+        getVis(tdt1,tdt2,choose,week_td);
 
         setNullWeek();
 
-        Button next = (Button) findViewById(R.id.next);
-        next.setOnClickListener(new View.OnClickListener(){
+        Button last = (Button) findViewById(R.id.last);
+        last.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(visit.this,visit_next.class);
+                Intent intent = new Intent(visit_next.this,visit.class);
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("division",choose);
                 intent.putExtras(bundle1);
@@ -110,9 +117,6 @@ public class visit extends AppCompatActivity {
                             //抓此筆資料的時段(上午、下午、夜間)
                             int time = response.body().getFields(i).getTime();
 
-                            //獲取此看診時間id
-                            final int id = response.body().getFields(i).getVisit_id();
-
                             //抓到有幾名醫生排班
                             int qua = response.body().getFields(i).getDoctor_id().length;
                             int j = 0;
@@ -122,12 +126,15 @@ public class visit extends AppCompatActivity {
                             int num = 0;
                             while (j < qua)
                             {
+                                //獲取此看診時間id
+                                final int id = response.body().getFields(i).getVisit_id();
+
                                 //獲取醫生姓名
                                 String doctor_name = response.body().getFields(i).getDoctor_name()[j];
 
                                 //抓出科室
                                 String division = response.body().getFields(i).getDivision_name()[j];
-                                if(division.equals(choose) && week >= week_td){
+                                if(division.equals(choose)){
                                     //丟入此方法 print中
                                     print(week, time, date, doctor_name,id);
                                 }
@@ -314,6 +321,12 @@ public class visit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
+                //Intent intent = new Intent(visit_next.this,.class);
+//                Bundle bundle1 = new Bundle();
+//                bundle1.putString("division",choose);
+                //intent.putExtras(bundle1);
+                //startActivity(intent);
+
             }
         });
 

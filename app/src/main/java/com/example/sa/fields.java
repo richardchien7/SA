@@ -113,6 +113,7 @@ public class fields {
     private int time;
     private String[] doctor_id;
     private String[] reservation_id;
+    private int visit_id;
 
     public String getDate() {
         return date;
@@ -130,6 +131,9 @@ public class fields {
         return reservation_id;
     }
 
+    public int getVisit_id(){
+        return visit_id;
+    }
 
 
 

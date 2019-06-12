@@ -34,6 +34,12 @@
         <activity android:name=".choose_division" />
         <activity android:name=".fragment.ContainerActivity" /> <!-- <activity android:name=".home" /> -->
         <activity android:name=".home"></activity>
+        <activity android:name=".visit" />
+        <activity android:name=".visit_next" />
+
+        <!-- <activity android:name=".home" /> -->
+
+
     </application>
 
 </manifest>
