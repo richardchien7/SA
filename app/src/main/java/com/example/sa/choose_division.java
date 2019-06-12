@@ -84,7 +84,7 @@ public class choose_division extends AppCompatActivity
         sp.setOnItemSelectedListener(selectListener);
 
         //因為下拉選單第一個為茶類，所以先載入茶類群組進第二個下拉選單
-        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, internal);
+        adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, internal);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp2 = (Spinner) findViewById(R.id.type2);
         sp2.setAdapter(adapter2);
@@ -104,30 +104,19 @@ public class choose_division extends AppCompatActivity
             }
         });
 
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.app_bar_choose_division);
-//        mBtn = (Button) findViewById(R.id.confirm);
-//        mBtn.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(choose_division.this,.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
-//                Bundle bundle = new Bundle();
-//                bundle.putString("division",str);
-//                intent.putExtras(bundle);
-//                startActivity(intent);
-//
-//            }
 
-            bt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(choose_division.this,confirm.class);
-                    startActivity(intent);
-                }
-            });
+        mBtn = (Button) findViewById(R.id.confirm);
+        mBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(choose_division.this,visit.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
+                Bundle bundle = new Bundle();
+                bundle.putString("division",str);
+                intent.putExtras(bundle);
+                startActivity(intent);
 
-
-
+            }
+        });
 
     }
 
@@ -175,17 +164,20 @@ public class choose_division extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_home) {
-
+            Intent intent = new Intent(choose_division.this, home.class);
+            startActivity(intent);
         } else if (id == R.id.nav_res) {
-
+            Intent intent = new Intent(choose_division.this, choose_division.class);
+            startActivity(intent);
         } else if (id == R.id.nav_schedule) {
-
+            Intent intent = new Intent(choose_division.this, sch.class);
+            startActivity(intent);
         } else if (id == R.id.nav_docInfo) {
-
+//            Intent intent = new Intent(choose_division.this,home.class);  第三優先
+//            startActivity(intent);
         } else if (id == R.id.nav_personal) {
-
+            Intent intent = new Intent(choose_division.this, personalPage.class);
+            startActivity(intent);
         } else if (id == R.id.nav_ask) {
 
         } else if (id == R.id.nav_question) {

@@ -17,10 +17,194 @@
             android:layout_width="match_parent"
             android:background="#508393"
             app:title="服 藥 提 醒"
-            app:titleMarginStart="90dp"
+            app:titleMarginStart="150dp"
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        tools:ignore="MissingConstraints">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="56dp">
+
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bt_border"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6pt"
+                android:layout_marginTop="5pt">
+
+                <TextView
+                    android:id="@+id/r1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="心臟科"
+                    android:textSize="11pt" />
+
+                <Switch
+                    android:id="@+id/r1_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="260dp"
+                    android:layout_marginTop="6dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6pt"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/r1_da"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="看診日期:"
+                    android:textSize="10pt" />
+
+                <TextView
+                    android:id="@+id/r1_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/r1_da"
+                    android:text="108年4月12日"
+                    android:textSize="10pt" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6pt"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="藥品清單 :"
+                    android:textSize="10pt"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="12pt">
+
+                <TextView
+                    android:id="@+id/morning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="早(飯後): \n \t\t\t胺碘酮     半顆\n \t\t\t阿替洛爾    一顆\n \t\t\t維拉帕米    一顆 "
+                    android:textSize="8pt"/>
+
+                <Button
+                    android:id="@+id/set_time1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/morning"
+                    android:layout_marginLeft="45dp"
+                    android:text="設定時間" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="12pt">
+
+                <TextView
+                    android:id="@+id/lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="午(飯後): \n \t\t\t胺碘酮     半顆\n \t\t\t氟卡尼     一顆\n \t\t\t阿替洛爾    半顆 "
+                    android:textSize="8pt"/>
+
+                <Button
+                    android:id="@+id/set_time2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/lunch"
+                    android:layout_marginLeft="45dp"
+                    android:text="設定時間" />
+            </RelativeLayout>
+
+            <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="12pt">
+
+            <TextView
+                android:id="@+id/dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="晚(飯後): \n \t\t\t地高辛    半顆\n \t\t\t阿替洛爾    一顆\n \t\t\t地爾硫䓬    一顆 "
+                android:textSize="8pt"/>
+
+            <Button
+                android:id="@+id/ser_time3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/dinner"
+                android:layout_marginLeft="45dp"
+                android:text="設定時間" />
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="12pt"
+                android:layout_marginBottom="13pt">
+
+                <TextView
+                    android:id="@+id/night"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="晚(睡前): \n \t\t\t胺碘酮    半顆\n \t\t\t索他洛爾    一顆\n \t\t\t維拉帕米    一顆 "
+                    android:textSize="8pt"/>
+
+                <Button
+                    android:id="@+id/ser_time4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/night"
+                    android:layout_marginLeft="45dp"
+                    android:text="設定時間" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+
+
+
 
 </android.support.constraint.ConstraintLayout>

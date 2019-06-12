@@ -52,4 +52,11 @@ public interface MyAPIService {
             })
     Call<Req> PostPatient(@Body Req fields);
 
+
+    @GET("visit_time?view=Grid%20view&api_key=keycPi0WBRNXVMtiW")
+    Call<visit_time> getVis();
+
+    @GET("visit_time/{id}?api_key=keyxoPJrsRszv63ZS")
+    Call<Req> getVisById(@Path("id") String id);
+
 }
