@@ -106,9 +106,9 @@ public class choose_division extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(choose_division.this,visit.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
-                Bundle bundle = new Bundle();
-                bundle.putString("division",str);
-                intent.putExtras(bundle);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("division",str);
+//                intent.putExtras(bundle);
                 startActivity(intent);
 
             }
