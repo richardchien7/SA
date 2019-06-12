@@ -13,6 +13,8 @@ public class RetrofitManager {
 
         // 設置baseUrl即要連的網站，addConverterFactory用Gson作為資料處理Converter
         // 資料庫"測試"的URL為 : https://api.airtable.com/v0/app2Na8quylF0scW1/
+
+        //copy copy https://api.airtable.com/v0/appwDibeVD9fSndrs/
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.airtable.com/v0/app2Na8quylF0scW1/")
                 .addConverterFactory(GsonConverterFactory.create())

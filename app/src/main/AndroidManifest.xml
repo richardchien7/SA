@@ -11,14 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".hospital_ask"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowReservation"></activity>
+        <activity android:name=".ShowReservation" />
         <activity android:name=".hospital_information" />
         <activity android:name=".register" />
         <activity android:name=".res_time" />
@@ -30,10 +31,16 @@
         <activity android:name=".medicineRemind"/>
         <activity android:name=".sch" />
         <activity android:name=".choose_division" />
+        <activity android:name=".personalPage" />
+        <activity android:name=".medicineRemind"/>
+        <activity android:name=".reviewRemind"/>
+        <activity android:name=".conditionRecord"/>
+        <activity android:name=".personalDocument"/>
         <activity android:name=".fragment.ContainerActivity" />
         <!-- <activity android:name=".home" /> -->
         <activity android:name=".home">
         </activity>
+        
     </application>
 
 </manifest>

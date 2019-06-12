@@ -3,6 +3,7 @@ package com.example.sa;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ProgressDialogUtil.dismiss();
         text = (TextView) findViewById(R.id.text);
         text.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         id = (EditText) findViewById(R.id.account);
@@ -37,8 +39,14 @@ public class MainActivity extends AppCompatActivity {
                 ProgressDialogUtil.showProgressDialog(MainActivity.this);
                 String patient_id = id.getText().toString().trim();//trim去除空白 getText獲取id裡的值
                 String patient_password = password.getText().toString().trim();
-                getPatient(patient_id, patient_password);
-
+                if(patient_id.equals("") || patient_password.equals(""))
+                {
+                    Toast.makeText(MainActivity.this,"請輸入帳號或密碼", Toast.LENGTH_SHORT).show();
+                    ProgressDialogUtil.dismiss();
+                }
+                else {
+                    getPatient(patient_id, patient_password);
+                }
             }
         });
 

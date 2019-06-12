@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
                 android:layout_marginTop="10dp"
-                android:text="姓名"
                 android:gravity="center"
-                />
+                android:text="姓名"
+                android:textSize="30sp" />
+
             <EditText
                 android:id="@+id/edit_name"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:textColor="#FFAD33"
+                android:layout_toRightOf="@+id/name"
                 android:background="@drawable/edit_bg"
-                android:layout_toRightOf="@+id/name" />
+                android:textColor="#FFAD33"
+                android:textSize="20sp" />
 
 
             <TextView
                 android:id="@+id/birthday"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:layout_marginTop="10dp"
-                android:text="生日"
                 android:layout_below="@+id/name"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                />
+                android:text="生日"
+                android:textSize="30sp" />
 
             <EditText
                 android:id="@+id/edit_birthday"
@@ -56,196 +56,233 @@
                 android:inputType="none"></EditText>
 
             <TextView
+                android:id="@+id/sex"
+                android:layout_width="70pt"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/birthday"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="性別"
+                android:textSize="30sp" />
+
+            <RadioGroup
+                android:id="@+id/choose_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toRightOf="@+id/sex"
+                android:layout_below="@id/edit_birthday">
+
+                <RadioButton
+                    android:id="@+id/sexman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="10dp"
+                    android:text="男"
+                    android:textSize="30sp" />
+
+                <RadioButton
+                    android:id="@+id/sexwoman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edit_birthday"
+
+                    android:layout_marginTop="10dp"
+
+                    android:layout_toRightOf="@id/sexman"
+                    android:text="女"
+                    android:textSize="30sp" />
+            </RadioGroup>
+
+            <TextView
                 android:id="@+id/ID"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:layout_below="@id/sex"
                 android:layout_marginTop="10dp"
-                android:text="身分證字號"
-                android:layout_below="@id/birthday"
                 android:gravity="center"
-                />
+                android:text="身分證字號"
+                android:textSize="30sp" />
+
             <EditText
                 android:id="@+id/edit_ID"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:textSize="20sp"
+                android:layout_below="@+id/sex"
                 android:layout_marginTop="10dp"
-                android:textColor="#FFAD33"
-                android:background="@drawable/edit_bg"
                 android:layout_toRightOf="@+id/ID"
-                android:layout_below="@+id/edit_birthday"/>
+                android:background="@drawable/edit_bg"
+                android:textColor="#FFAD33"
+                android:textSize="20sp" />
 
 
             <TextView
                 android:id="@+id/password"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:layout_marginTop="10dp"
-                android:text="密碼"
                 android:layout_below="@+id/ID"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                />
+                android:text="密碼"
+                android:textSize="30sp" />
+
             <EditText
                 android:id="@+id/edit_password"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:textSize="20sp"
+                android:layout_below="@+id/edit_ID"
                 android:layout_marginTop="10dp"
-                android:textColor="#FFAD33"
-                android:background="@drawable/edit_bg"
                 android:layout_toRightOf="@+id/password"
-                android:layout_below="@+id/edit_ID"/>
+                android:background="@drawable/edit_bg"
+                android:textColor="#FFAD33"
+                android:textSize="20sp" />
 
 
             <TextView
                 android:id="@+id/password_check"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:layout_marginTop="10dp"
-                android:text="確認密碼"
                 android:layout_below="@+id/password"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                />
+                android:text="確認密碼"
+                android:textSize="30sp" />
+
             <EditText
                 android:id="@+id/edit_password_check"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:textSize="20sp"
+                android:layout_below="@+id/edit_password"
                 android:layout_marginTop="10dp"
-                android:textColor="#FFAD33"
-                android:background="@drawable/edit_bg"
                 android:layout_toRightOf="@+id/password_check"
-                android:layout_below="@+id/edit_password"/>
+                android:background="@drawable/edit_bg"
+                android:textColor="#FFAD33"
+                android:textSize="20sp" />
 
 
             <TextView
                 android:id="@+id/address"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:layout_marginTop="10dp"
-                android:text="住址"
                 android:layout_below="@+id/password_check"
-                android:gravity="center"/>
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="住址"
+                android:textSize="30sp" />
+
             <EditText
                 android:id="@+id/edit_address"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:textSize="20sp"
+                android:layout_below="@+id/edit_password_check"
                 android:layout_marginTop="10dp"
-                android:textColor="#FFAD33"
-                android:background="@drawable/edit_bg"
                 android:layout_toRightOf="@+id/address"
-                android:layout_below="@+id/edit_password_check"/>
+                android:background="@drawable/edit_bg"
+                android:textColor="#FFAD33"
+                android:textSize="20sp" />
 
 
             <TextView
                 android:id="@+id/phone"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:layout_marginTop="10dp"
-                android:text="聯絡電話"
                 android:layout_below="@+id/address"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                />
+                android:text="聯絡電話"
+                android:textSize="30sp" />
+
             <EditText
                 android:id="@+id/edit_phone"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:textSize="20sp"
+                android:layout_below="@+id/edit_address"
                 android:layout_marginTop="10dp"
-                android:textColor="#FFAD33"
-                android:background="@drawable/edit_bg"
                 android:layout_toRightOf="@+id/phone"
-                android:layout_below="@+id/edit_address"/>
+                android:background="@drawable/edit_bg"
+                android:textColor="#FFAD33"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/emergency_name"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:layout_marginTop="10dp"
-                android:text="緊急聯絡人"
                 android:layout_below="@+id/phone"
-                android:gravity="center"/>
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="緊急聯絡人"
+                android:textSize="30sp" />
+
             <EditText
                 android:id="@+id/edit_emergency_name"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:textSize="20sp"
+                android:layout_below="@+id/edit_phone"
                 android:layout_marginTop="10dp"
-                android:textColor="#FFAD33"
-                android:background="@drawable/edit_bg"
                 android:layout_toRightOf="@id/emergency_name"
-                android:layout_below="@+id/edit_phone"/>
+                android:background="@drawable/edit_bg"
+                android:textColor="#FFAD33"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/emergency_relationship"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:layout_marginTop="10dp"
-                android:text="關係"
                 android:layout_below="@+id/emergency_name"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                />
+                android:text="關係"
+                android:textSize="30sp" />
+
             <EditText
                 android:id="@+id/edit_emergency_relationship"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:textSize="20sp"
+                android:layout_below="@+id/edit_emergency_name"
                 android:layout_marginTop="10dp"
-                android:textColor="#FFAD33"
-                android:background="@drawable/edit_bg"
                 android:layout_toRightOf="@id/emergency_relationship"
-                android:layout_below="@+id/edit_emergency_name"/>
+                android:background="@drawable/edit_bg"
+                android:textColor="#FFAD33"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/emergency_phone"
                 android:layout_width="70pt"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:layout_marginTop="10dp"
-                android:text="緊急聯絡  電話"
                 android:layout_below="@+id/emergency_relationship"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                />
+                android:text="緊急聯絡  電話"
+                android:textSize="30sp" />
+
             <EditText
                 android:id="@+id/edit_emergency_phone"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:textSize="20sp"
-                android:textColor="#FFAD33"
+                android:layout_below="@+id/edit_emergency_relationship"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/edit_bg"
                 android:layout_toRightOf="@+id/emergency_phone"
-                android:layout_below="@+id/edit_emergency_relationship"/>
+                android:background="@drawable/edit_bg"
+                android:textColor="#FFAD33"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="註冊"
-                android:textSize="20sp"
-                android:background="@drawable/shape_rectangle"
-                android:layout_marginTop="40dp"
                 android:layout_below="@+id/edit_emergency_phone"
+                android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"/>
-
+                android:layout_marginTop="40dp"
+                android:background="@drawable/shape_rectangle"
+                android:text="註冊"
+                android:textSize="20sp" />
 
 
         </RelativeLayout>
 
     </ScrollView>
-
-
-
-
 
 
 </LinearLayout>

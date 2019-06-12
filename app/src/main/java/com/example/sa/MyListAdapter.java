@@ -76,15 +76,15 @@ public class MyListAdapter extends BaseAdapter {
         holder.date.setText(data[position][3]);
         holder.num.setText(data[position][4]);
         holder.process.setText(data[position][5]);
-        holder.title.setText(data[position][6]);
+        holder.title.setText(data[position][6]+" 診間為: "+data[position][7]);
         holder.bb.setOnClickListener(new ItemButton_Click(this.schh,position));
         holder.sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    schh.show(true);
+                    schh.show(true,data[position][7],data[position][1]);
                 } else {
-                    schh.show(false);
+                    schh.show(false,data[position][7],data[position][1]);
                 }
 
 
