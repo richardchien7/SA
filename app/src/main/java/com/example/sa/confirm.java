@@ -14,36 +14,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.jar.Attributes;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class confirm extends AppCompatActivity {
-private int num = 1;
+    private int num = 1;
     private MyAPIService MyAPIService;
-    Bundle bundle =this.getIntent().getExtras();
-    int V_id = bundle.getInt("id");
-    String Div_name = bundle.getString("division");
-    String Doc_name = bundle.getString("doctor");
-    String Office = bundle.getString("office");
-    String Date= bundle.getString("date");
-    int Period = bundle.getInt("time");
-
 
 
 
     //接值
     String p_id = "recPrpA5pZVkqJhzL";
-//    String d_id = "reckNpldTswjhpaZl" ;
-//    String vis_id = "reccySMSdrLwsHWQc";
+        String d_id = "reckNpldTswjhpaZl" ;
+    String vis_id = "reccySMSdrLwsHWQc";
 //
 //
 //    //將值轉成陣列
     String[] patient_id = new String[]{p_id};
-//    String[] doctor = new String[]{d_id};
-//    String[] visit_time_id = new String[]{vis_id};
+    String[] doctor = new String[]{d_id};
+    String[] visit_time_id = new String[]{vis_id};
     //int num = 1;
-
 
 
     @Override
@@ -56,51 +48,51 @@ private int num = 1;
         Button b2 = (Button) findViewById(R.id.button2);
         b2.setOnClickListener(cancel);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("User" , MODE_PRIVATE);
-        String P_name = sharedPreferences.getString("patient_name" , null);
+        SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
+        String P_name = sharedPreferences.getString("patient_name", null);
         //postRes("recXD2Gaj9GDjAd5e");
 
         //接前一頁的值
         //Bundle bundle =this.getIntent().getExtras();
         //b的例子
         String Name = "hello";
+        Bundle bundle = this.getIntent().getExtras();
+        int V_id = bundle.getInt("id");
+        String Div_name = bundle.getString("division");
+        String Doc_name = bundle.getString("doctor");
+        String Office = bundle.getString("office");
+        String Date = bundle.getString("date");
+        int Period = bundle.getInt("time");
+        String[] doctor_id;
 
+        TextView tv1 = (TextView) findViewById(R.id.textView1);
+        tv1.setText("預約門診: " + Div_name);
 
+        TextView tv2 = (TextView) findViewById(R.id.textView2);
+        tv2.setText("看診醫師: " + Doc_name);
 
+        TextView tv3 = (TextView) findViewById(R.id.textView3);
+        tv3.setText("診間號碼: " + Office);
 
+        TextView tv4 = (TextView) findViewById(R.id.textView4);
+        tv4.setText("看診日期: " + Date);
 
-        TextView tv1 = (TextView)findViewById(R.id.textView1);
-        tv1.setText("預約門診: "+Div_name);
-
-        TextView tv2 = (TextView)findViewById(R.id.textView2);
-        tv2.setText("看診醫師: "+Doc_name);
-
-        TextView tv3 = (TextView)findViewById(R.id.textView3);
-        tv3.setText("診間號碼: "+Office);
-
-        TextView tv4 = (TextView)findViewById(R.id.textView4);
-        tv4.setText("看診日期: "+Date);
-
-        if(Period == 0){
-            TextView tv5 = (TextView)findViewById(R.id.textView5);
-            tv5.setText("看診時段: "+"上午診");
-        }
-
-        else if(Period == 1){
-            TextView tv5 = (TextView)findViewById(R.id.textView5);
-            tv5.setText("看診時段: "+"下午診");
-        }
-
-        else if(Period == 2){
-            TextView tv5 = (TextView)findViewById(R.id.textView5);
-            tv5.setText("看診時段: "+"晚間診");
+        if (Period == 0) {
+            TextView tv5 = (TextView) findViewById(R.id.textView5);
+            tv5.setText("看診時段: " + "上午診");
+        } else if (Period == 1) {
+            TextView tv5 = (TextView) findViewById(R.id.textView5);
+            tv5.setText("看診時段: " + "下午診");
+        } else if (Period == 2) {
+            TextView tv5 = (TextView) findViewById(R.id.textView5);
+            tv5.setText("看診時段: " + "晚間診");
         }
 
 //        TextView tv5 = (TextView)findViewById(R.id.textView5);
 //        tv5.setText("看診時段: "+Period);
 
-        TextView tv7 = (TextView)findViewById(R.id.textView6);
-        tv7.setText("掛號病人姓名: "+P_name);
+        TextView tv7 = (TextView) findViewById(R.id.textView6);
+        tv7.setText("掛號病人姓名: " + P_name);
 
 
     }
@@ -135,23 +127,8 @@ private int num = 1;
     };
 
 
-    public void getReservation()
-    {
+    public void getReservation() {
         MyAPIService = RetrofitManager.getInstance().getAPI();
-        Call<patient> call1 = MyAPIService.getdoctor();
-        call1.enqueue(new Callback<patient>() {
-            @Override
-            public void onResponse(Call<patient> call, Response<patient> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<patient> call, Throwable t) {
-
-            }
-        });
-
-
         Call<patient> call = MyAPIService.getReservation();
         call.enqueue(new Callback<patient>() {
             @Override
@@ -159,10 +136,9 @@ private int num = 1;
                 int len = response.body().getRecords().length;
                 //int num = 1;
                 int i = 0;
-                while(i<len){
-
-                    if(response.body().getFields(i).getVisit_time_id().equals(V_id) &&
-                            response.body().getFields(i).getDoctor().equals(Doc_name)){
+                while (i < len) {
+                    if (response.body().getFields(i).getVisit_time_id().equals(visit_time_id) &&
+                            response.body().getFields(i).getDoctor().equals(doctor)) {
                         num++;
                     }
                     i++;
