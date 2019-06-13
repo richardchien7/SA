@@ -21,21 +21,27 @@ import retrofit2.Response;
 public class confirm extends AppCompatActivity {
 private int num = 1;
     private MyAPIService MyAPIService;
-
+    Bundle bundle =this.getIntent().getExtras();
+    int V_id = bundle.getInt("id");
+    String Div_name = bundle.getString("division");
+    String Doc_name = bundle.getString("doctor");
+    String Office = bundle.getString("office");
+    String Date= bundle.getString("date");
+    int Period = bundle.getInt("time");
 
 
 
 
     //接值
     String p_id = "recPrpA5pZVkqJhzL";
-    String d_id = "reckNpldTswjhpaZl" ;
-    String vis_id = "reccySMSdrLwsHWQc";
-
-
-    //將值轉成陣列
+//    String d_id = "reckNpldTswjhpaZl" ;
+//    String vis_id = "reccySMSdrLwsHWQc";
+//
+//
+//    //將值轉成陣列
     String[] patient_id = new String[]{p_id};
-    String[] doctor = new String[]{d_id};
-    String[] visit_time_id = new String[]{vis_id};
+//    String[] doctor = new String[]{d_id};
+//    String[] visit_time_id = new String[]{vis_id};
     //int num = 1;
 
 
@@ -59,13 +65,6 @@ private int num = 1;
         //b的例子
         String Name = "hello";
 
-        Bundle bundle =this.getIntent().getExtras();
-        String Div_name = bundle.getString("Name");
-        String Doc_name = bundle.getString("doctor");
-        String Office = bundle.getString("Name");
-        String Date= bundle.getString("Name");
-        String Period = bundle.getString("Name");
-        String Num = bundle.getString("Name");
 
 
 
@@ -82,8 +81,23 @@ private int num = 1;
         TextView tv4 = (TextView)findViewById(R.id.textView4);
         tv4.setText("看診日期: "+Date);
 
-        TextView tv5 = (TextView)findViewById(R.id.textView5);
-        tv5.setText("看診時段: "+Period);
+        if(Period == 0){
+            TextView tv5 = (TextView)findViewById(R.id.textView5);
+            tv5.setText("看診時段: "+"上午診");
+        }
+
+        else if(Period == 1){
+            TextView tv5 = (TextView)findViewById(R.id.textView5);
+            tv5.setText("看診時段: "+"下午診");
+        }
+
+        else if(Period == 2){
+            TextView tv5 = (TextView)findViewById(R.id.textView5);
+            tv5.setText("看診時段: "+"晚間診");
+        }
+
+//        TextView tv5 = (TextView)findViewById(R.id.textView5);
+//        tv5.setText("看診時段: "+Period);
 
         TextView tv7 = (TextView)findViewById(R.id.textView6);
         tv7.setText("掛號病人姓名: "+P_name);
@@ -124,6 +138,20 @@ private int num = 1;
     public void getReservation()
     {
         MyAPIService = RetrofitManager.getInstance().getAPI();
+        Call<patient> call1 = MyAPIService.getdoctor();
+        call1.enqueue(new Callback<patient>() {
+            @Override
+            public void onResponse(Call<patient> call, Response<patient> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<patient> call, Throwable t) {
+
+            }
+        });
+
+
         Call<patient> call = MyAPIService.getReservation();
         call.enqueue(new Callback<patient>() {
             @Override
@@ -133,15 +161,15 @@ private int num = 1;
                 int i = 0;
                 while(i<len){
 
-                    if(response.body().getFields(i).getVisit_time_id().equals(visit_time_id) &&
-                            response.body().getFields(i).getDoctor().equals(doctor)){
+                    if(response.body().getFields(i).getVisit_time_id().equals(V_id) &&
+                            response.body().getFields(i).getDoctor().equals(Doc_name)){
                         num++;
                     }
                     i++;
                 }
 
-                Req q = new Req(new fields(doctor,visit_time_id , patient_id, num, "finished"));
-                postReservation(q);
+//                Req q = new Req(new fields(Doc_name, V_id , patient_id, num, "unregistered"));
+//                postReservation(q);
 
             }
 

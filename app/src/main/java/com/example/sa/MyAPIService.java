@@ -59,4 +59,7 @@ public interface MyAPIService {
     @GET("visit_time/{id}?api_key=keyxoPJrsRszv63ZS")
     Call<Req> getVisById(@Path("id") String id);
 
+    @GET("visit_time?view=Grid%20view&api_key=keycPi0WBRNXVMtiW")
+    Call<patient> getdoctor();
+
 }
