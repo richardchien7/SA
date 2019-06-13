@@ -4,7 +4,7 @@ public class visit_time {
 
     private visit_time[] records;
     private String id;
-    private com.example.sa.fields fields;
+    private fieldsvisit fields;
 
 
     public visit_time[] getRecords()
@@ -16,7 +16,7 @@ public class visit_time {
         return records[i].id;
     }
 
-    public com.example.sa.fields getFields(int i)
+    public fieldsvisit getFields(int i)
     {
         return records[i].fields;
     }
