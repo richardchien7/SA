@@ -2,6 +2,7 @@ package com.example.sa;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -120,7 +121,7 @@ public class register extends AppCompatActivity {
                             sex_tostring = "F";
                         }
 
-                            PostRegister(p_birthday,sex_tostring, p_name, p_ID, p_password, p_password_check, p_address, p_phone, p_emergencyname, p_emergencyrelation, p_emergencyphone);
+                            getPatient(p_birthday,sex_tostring, p_name, p_ID, p_password, p_password_check, p_address, p_phone, p_emergencyname, p_emergencyrelation, p_emergencyphone);
                     }
                 }
                 else
@@ -130,6 +131,35 @@ public class register extends AppCompatActivity {
             }
         });
 
+    }
+    public void getPatient(final String p_bithday,final String sex_tostring , final String p_name, final String p_ID, final String p_password, final String p_password_check, final String p_address, final String p_phone, final String p_emergencyname, final String p_emergencyrelation, final String p_emergencyphone) {
+        myAPIService = RetrofitManager.getInstance().getAPI();
+        Call<patient> call = myAPIService.getPat();
+        call.enqueue(new Callback<patient>() {
+            @Override
+            public void onResponse(Call<patient> call, Response<patient> response) {//如果請求連接資料庫並成功抓到值
+                int len = response.body().getRecords().length;
+                int j = 0;
+                boolean ifExisted = false;
+                while (j < len) {
+                    if (response.body().getFields(j).getId().equals(p_ID)) {
+                        ifExisted = true;
+                        Toast.makeText(register.this, "此帳號已存在!", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    j++;
+                }
+                if (ifExisted == false) {
+
+                    PostRegister(p_birthday,sex_tostring, p_name, p_ID, p_password, p_password_check, p_address, p_phone, p_emergencyname, p_emergencyrelation, p_emergencyphone);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<patient> call, Throwable t) {
+                Toast.makeText(register.this, "註冊失敗!!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**
