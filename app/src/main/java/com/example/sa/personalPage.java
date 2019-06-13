@@ -133,7 +133,8 @@ public class personalPage extends AppCompatActivity
             Intent intent = new Intent(personalPage.this, personalPage.class);
             startActivity(intent);
         } else if (id == R.id.nav_question) {
-
+            Intent intent = new Intent(personalPage.this, about_system.class);
+            startActivity(intent);
         } else if (id == R.id.nav_logout) {
 
         }
