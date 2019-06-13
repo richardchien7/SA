@@ -94,7 +94,9 @@ public class fields {
     public String[] getDoctor_name() {
         return doctor_name;
     }
-
+    public String getDoctor_name1(){
+        return name;
+    }
     public String[] getVisit_date() {
         return visit_date;
     }

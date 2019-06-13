@@ -24,12 +24,11 @@ public class confirm extends AppCompatActivity {
     private MyAPIService MyAPIService;
 
 
-
     //接值
     String p_id = "recPrpA5pZVkqJhzL";
-        String d_id = "reckNpldTswjhpaZl" ;
+    String d_id = "reckNpldTswjhpaZl";
     String vis_id = "reccySMSdrLwsHWQc";
-//
+    //
 //
 //    //將值轉成陣列
     String[] patient_id = new String[]{p_id};
@@ -44,12 +43,16 @@ public class confirm extends AppCompatActivity {
         setContentView(R.layout.activity_confirm);
 
         Button b1 = (Button) findViewById(R.id.button1);
-        b1.setOnClickListener(confirm);
+        //b1.setOnClickListener(confirm);
         Button b2 = (Button) findViewById(R.id.button2);
         b2.setOnClickListener(cancel);
 
         SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
         String P_name = sharedPreferences.getString("patient_name", null);
+
+        SharedPreferences sharedPreferences1 = getSharedPreferences("User", MODE_PRIVATE);
+        final String P_id1 = sharedPreferences.getString("patient_id", null);
+        final String[] P_id = {P_id1};
         //postRes("recXD2Gaj9GDjAd5e");
 
         //接前一頁的值
@@ -57,9 +60,13 @@ public class confirm extends AppCompatActivity {
         //b的例子
         String Name = "hello";
         Bundle bundle = this.getIntent().getExtras();
-        int V_id = bundle.getInt("id");
+        final String V_id1 = bundle.getString("id");
+        final String[] V_id = {V_id1};
         String Div_name = bundle.getString("division");
-        String Doc_name = bundle.getString("doctor");
+
+        final String Doc_name1 = bundle.getString("doctor");
+        final String Doc_name[] = {Doc_name1};
+
         String Office = bundle.getString("office");
         String Date = bundle.getString("date");
         int Period = bundle.getInt("time");
@@ -93,23 +100,30 @@ public class confirm extends AppCompatActivity {
 
         TextView tv7 = (TextView) findViewById(R.id.textView6);
         tv7.setText("掛號病人姓名: " + P_name);
-
-
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getReservation(Doc_name, V_id, P_id);
+                Intent intent = new Intent();
+                intent.setClass(confirm.this, home.class);
+                startActivity(intent);
+            }
+        });
+//        private View.OnClickListener confirm = new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//
+//                getReservation();
+//                Intent intent = new Intent();
+//                intent.setClass(confirm.this, home.class);
+//                startActivity(intent);
+//            }
+//
+//
+//        };
     }
 
-    private View.OnClickListener confirm = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-
-            getReservation();
-            Intent intent = new Intent();
-            intent.setClass(confirm.this, home.class);
-            startActivity(intent);
-        }
-
-
-    };
 
     private View.OnClickListener cancel = new View.OnClickListener() {
 
@@ -127,7 +141,7 @@ public class confirm extends AppCompatActivity {
     };
 
 
-    public void getReservation() {
+    public void getReservation(final String[] Doc_name, final String[] V_id, final String[] patient_id) {
         MyAPIService = RetrofitManager.getInstance().getAPI();
         Call<patient> call = MyAPIService.getReservation();
         call.enqueue(new Callback<patient>() {
@@ -144,8 +158,8 @@ public class confirm extends AppCompatActivity {
                     i++;
                 }
 
-//                Req q = new Req(new fields(Doc_name, V_id , patient_id, num, "unregistered"));
-//                postReservation(q);
+                Reqconfirm q = new Reqconfirm(new fieldsconfirm(Doc_name, V_id, patient_id, num, "unregistered"));
+                postReservation(q);
 
             }
 
@@ -156,20 +170,20 @@ public class confirm extends AppCompatActivity {
         });
     }
 
-    public void postReservation(final Req q) {
+    public void postReservation(final Reqconfirm q) {
         MyAPIService = RetrofitManager.getInstance().getAPI();
         // 建立要POST的物件
-        Call<Req> call = MyAPIService.PostReservation(q);
-        call.enqueue(new Callback<Req>() {
+        Call<Reqconfirm> call = MyAPIService.PostReservation(q);
+        call.enqueue(new Callback<Reqconfirm>() {
             @Override
-            public void onResponse(Call<Req> call, Response<Req> response) {
+            public void onResponse(Call<Reqconfirm> call, Response<Reqconfirm> response) {
                 Toast.makeText(confirm.this, response.toString(), Toast.LENGTH_SHORT).show();
 
             }
 
 
             @Override
-            public void onFailure(Call<Req> call, Throwable t) {
+            public void onFailure(Call<Reqconfirm> call, Throwable t) {
 
             }
         });

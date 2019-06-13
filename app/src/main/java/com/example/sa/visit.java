@@ -27,14 +27,15 @@ import retrofit2.Response;
 public class visit extends AppCompatActivity {
 
     private MyAPIService myAPIService;
-    private TextView Mon,Tue,Wed,Thu,Fri;
+    private TextView Mon, Tue, Wed, Thu, Fri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visit);
 
-        Bundle bundle0311 =this.getIntent().getExtras();
+        Bundle bundle0311 = this.getIntent().getExtras();
         final String choose = bundle0311.getString("division");
         //抓到設定的textview
         setTextView();
@@ -48,7 +49,7 @@ public class visit extends AppCompatActivity {
         int week_td = dt.getDay();
 
         //將日期的形式轉換為 年-月-日
-        String dts =sdf.format(dt);
+        String dts = sdf.format(dt);
 
         //把date轉為Calendar型態，並加上5天， 用來限制抓下來的資料
         Calendar calendar = Calendar.getInstance();
@@ -56,25 +57,25 @@ public class visit extends AppCompatActivity {
         calendar.add(Calendar.DATE, 5);
 
         //將Calendar轉換回Date
-        Date tdt =calendar.getTime();
+        Date tdt = calendar.getTime();
 
         //將加五天後的日期轉換為 年-月-日
-        String wa =sdf.format(tdt);
+        String wa = sdf.format(tdt);
 
 
         //將兩天日期放進函式
 
-        getVis(dt,tdt,choose,week_td);
+        getVis(dt, tdt, choose, week_td);
 
         setNullWeek();
 
         Button next = (Button) findViewById(R.id.next);
-        next.setOnClickListener(new View.OnClickListener(){
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent intent = new Intent(visit.this,visit_next.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(visit.this, visit_next.class);
                 Bundle bundle1 = new Bundle();
-                bundle1.putString("division",choose);
+                bundle1.putString("division", choose);
                 intent.putExtras(bundle1);
                 startActivity(intent);
             }
@@ -83,7 +84,7 @@ public class visit extends AppCompatActivity {
 
     }
 
-    public void getVis(final  Date  nw, final Date aw, final String choose, final int week_td){
+    public void getVis(final Date nw, final Date aw, final String choose, final int week_td) {
         myAPIService = RetrofitManager.getInstance().getAPI();
         Call<visit_time> call = myAPIService.getVis();
 
@@ -95,8 +96,7 @@ public class visit extends AppCompatActivity {
                 int len = response.body().getRecords().length;
                 int i = 0;
                 //跑一迴圈判斷排班日期是否在所設定的範圍內
-                while(i < len)
-                {
+                while (i < len) {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     //將丟進來的Date 日期轉換為 String
                     String w = sdf.format(nw);
@@ -104,7 +104,7 @@ public class visit extends AppCompatActivity {
                     //獲取此筆日期
                     String date = response.body().getFields(i).getDate();
                     //設定條件式
-                    if(date.compareToIgnoreCase(w) >= 0 && date.compareToIgnoreCase(nw)<=0) {
+                    if (date.compareToIgnoreCase(w) >= 0 && date.compareToIgnoreCase(nw) <= 0) {
                         try {
                             //將此筆String的日期轉換為Date的日期
                             Date t = sdf.parse(date);
@@ -114,7 +114,7 @@ public class visit extends AppCompatActivity {
                             int time = response.body().getFields(i).getTime();
 
                             //獲取此看診時間id
-                            final int id = response.body().getFields(i).getVisit_id();
+                            final String id = response.body().getId(i);
 
 
                             //抓到有幾名醫生排班
@@ -124,19 +124,18 @@ public class visit extends AppCompatActivity {
 
                             //加到第幾個欄位
                             int num = 0;
-                            while (j < qua)
-                            {
+                            while (j < qua) {
                                 //獲取醫生姓名
-                                String doctor_name = response.body().getFields(i).getDoctor_name()[j];
+                                String[] doctor_name = response.body().getFields(i).getDoctor_id();
 
                                 //抓出科室
                                 String division = response.body().getFields(i).getDivision_name()[j];
 
                                 //獲取診間號碼
                                 String office = response.body().getFields(i).getDoctor_office()[j];
-                                if(division.equals(choose) && week_td <= week){
+                                if (division.equals(choose) && week_td <= week) {
                                     //丟入此方法 print中
-                                    print(week, time, date, doctor_name,id,office,division);
+                                    print(week, time, date, doctor_name, id, office, division);
                                 }
 
                                 j++;
@@ -149,8 +148,6 @@ public class visit extends AppCompatActivity {
                         }
 
 
-
-
                     }
                     i++;
                 }
@@ -159,7 +156,7 @@ public class visit extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<visit_time> call, Throwable t) {
-                Log.d("!!!",t.getMessage());
+                Log.d("!!!", t.getMessage());
 
             }
         });
@@ -167,9 +164,7 @@ public class visit extends AppCompatActivity {
     }
 
 
-
-    public void print(int week,int time,String date,String dn,int id,String office,String division)
-    {
+    public void print(int week, int time, String date, String[] dn, String id, String office, String division) {
 
 
         LinearLayout Mon0 = (LinearLayout) findViewById(R.id.Mon0);
@@ -189,68 +184,59 @@ public class visit extends AppCompatActivity {
         LinearLayout Fri2 = (LinearLayout) findViewById(R.id.Fri2);
 
 
-
         //week為星期 time為時段 date為排班當天日期 dn為排班醫生的姓名
         //目前我沒做星期六、日的排班，可依需要增加或刪減
         String date1 = date.substring(5);
         if (week == 1) {
-            Mon.setText(date1+"\n週一");
-            if (time == 0){
-                createButton(dn,Mon0,id,date,time,office,division);
-            }
-
-            else if (time == 1)
-                createButton(dn,Mon1,id,date,time,office,division);
+            Mon.setText(date1 + "\n週一");
+            if (time == 0) {
+                createButton(dn, Mon0, id, date, time, office, division);
+            } else if (time == 1)
+                createButton(dn, Mon1, id, date, time, office, division);
             else
-                createButton(dn,Mon2,id,date,time,office,division);
-        }
-        else if (week == 2) {
-            Tue.setText(date1+"\n週二");
+                createButton(dn, Mon2, id, date, time, office, division);
+        } else if (week == 2) {
+            Tue.setText(date1 + "\n週二");
             if (time == 0)
-                createButton(dn,Tue0,id,date,time,office,division);
+                createButton(dn, Tue0, id, date, time, office, division);
             else if (time == 1)
-                createButton(dn,Tue1,id,date,time,office,division);
+                createButton(dn, Tue1, id, date, time, office, division);
             else
-                createButton(dn,Tue2,id,date,time,office,division);
-        }
-        else if (week == 3) {
-            Wed.setText(date1+"\n週三");
+                createButton(dn, Tue2, id, date, time, office, division);
+        } else if (week == 3) {
+            Wed.setText(date1 + "\n週三");
             if (time == 0)
-                createButton(dn,Wed0,id,date,time,office,division);
+                createButton(dn, Wed0, id, date, time, office, division);
             else if (time == 1)
-                createButton(dn,Wed1,id,date,time,office,division);
-            else{
-                createButton(dn,Wed2,id,date,time,office,division);
+                createButton(dn, Wed1, id, date, time, office, division);
+            else {
+                createButton(dn, Wed2, id, date, time, office, division);
 
             }
 
-        }
-        else if (week == 4) {
-            Thu.setText(date1+"\n週四");
+        } else if (week == 4) {
+            Thu.setText(date1 + "\n週四");
             if (time == 0)
-                createButton(dn,Thu0,id,date,time,office,division);
+                createButton(dn, Thu0, id, date, time, office, division);
             else if (time == 1)
-                createButton(dn,Thu1,id,date,time,office,division);
+                createButton(dn, Thu1, id, date, time, office, division);
             else
-                createButton(dn,Thu2,id,date,time,office,division);
-        }
-        else if (week == 5) {
-            Fri.setText(date1+"\n週五");
-            if (time == 0){
-                createButton(dn,Fri0,id,date,time,office,division);
-            }
-            else if (time == 1){
-              createButton(dn,Fri1,id,date,time,office,division);
-            }
-            else{
-                createButton(dn,Fri2,id,date,time,office,division);
+                createButton(dn, Thu2, id, date, time, office, division);
+        } else if (week == 5) {
+            Fri.setText(date1 + "\n週五");
+            if (time == 0) {
+                createButton(dn, Fri0, id, date, time, office, division);
+            } else if (time == 1) {
+                createButton(dn, Fri1, id, date, time, office, division);
+            } else {
+                createButton(dn, Fri2, id, date, time, office, division);
 
             }
 
         }
     }
 
-    public void setTextView(){
+    public void setTextView() {
         Mon = findViewById(R.id.Mon);
 //        Mon0 = findViewById(R.id.Mon0);
 //        Mon1 = findViewById(R.id.Mon1);
@@ -277,41 +263,60 @@ public class visit extends AppCompatActivity {
 //        Fri2 = findViewById(R.id.Fri2);
 
 
-
-
     }
 
-    public void setNullWeek(){
+    public void setNullWeek() {
 
-        if(TextUtils.isEmpty(Mon.getText())){
+        if (TextUtils.isEmpty(Mon.getText())) {
             Mon.setText("週一");
         }
-        if(TextUtils.isEmpty(Tue.getText())){
+        if (TextUtils.isEmpty(Tue.getText())) {
             Tue.setText("週二");
         }
-        if(TextUtils.isEmpty(Wed.getText())){
+        if (TextUtils.isEmpty(Wed.getText())) {
             Wed.setText("週三");
         }
-        if(TextUtils.isEmpty(Thu.getText())){
+        if (TextUtils.isEmpty(Thu.getText())) {
             Thu.setText("週四");
         }
-        if(TextUtils.isEmpty(Fri.getText())){
+        if (TextUtils.isEmpty(Fri.getText())) {
             Fri.setText("週五");
         }
 
     }
 
-    private void createButton(final String txt, LinearLayout view,final int id,final String date,final int time,final String office,final String division) {
+    private void createButton(final String[] txt, LinearLayout view, final String id, final String date, final int time, final String office, final String division) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
 
         //定义子View中两个元素的布局
         ViewGroup.LayoutParams vlp = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        Button b1 = new Button(this);
-        b1.setText(txt);
+        final Button b1 = new Button(this);
+        //抓醫生名子，還沒寫完
+        myAPIService = RetrofitManager.getInstance().getAPI();
+        Call<doctor> call = myAPIService.getdoctor();
+        call.enqueue(new Callback<doctor>() {
+            @Override
+            public void onResponse(Call<doctor> call, Response<doctor> response) {
+//                for(int i = 0;i<response.body().getRecords().length;i++) {
+//                    if(response.body().getId(i).equals(id)) {
+//                        b1.setText(response.body().getdoctorname(i));
+//                    }
+//                }
+                //b1.setText(response.body().getdoctorname(0));
+            }
+
+            @Override
+            public void onFailure(Call<doctor> call, Throwable t) {
+
+            }
+        });
+
+        b1.setText(txt[0]);
         b1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.bt_border, 0, 0, 0);
         b1.setBackgroundColor(Color.WHITE);
         b1.setTextSize(20);
@@ -321,19 +326,17 @@ public class visit extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(visit.this,confirm.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
+                Intent intent = new Intent(visit.this, confirm.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
                 //Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
                 Bundle bundle_confirm = new Bundle();
-                bundle_confirm.putInt("id",id);
-                bundle_confirm.putString("doctor",txt);
-                bundle_confirm.putString("date",date);
-                bundle_confirm.putInt("time",time);
-                bundle_confirm.putString("office",office);
-                bundle_confirm.putString("division",division);
+                bundle_confirm.putString("id", id);
+                bundle_confirm.putString("doctor", txt[0]);
+                bundle_confirm.putString("date", date);
+                bundle_confirm.putInt("time", time);
+                bundle_confirm.putString("office", office);
+                bundle_confirm.putString("division", division);
                 intent.putExtras(bundle_confirm);
                 startActivity(intent);
-
-
 
 
             }

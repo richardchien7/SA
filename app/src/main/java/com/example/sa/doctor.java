@@ -19,10 +19,12 @@ public class doctor {
     public String getId(int i) {
         return records[i].id;
     }
+    public String getdoctorname(int i){
+        return records[i].getFields().getDoctor_name1();
+    }
 
-
-    public fields getFields(int i) {
-        return records[i].fields;
+    public fields getFields() {
+        return fields;
     }
 
 
