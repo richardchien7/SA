@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".doctor_info">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/PopupOverlay"
+            android:background="#508393"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--<include layout="@layout/content_doctor_info" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="請 選 擇 醫 師"
+            android:fontFamily=""
+            android:textSize="30dp" />
+
+
+        <View
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@android:color/darker_gray" />
+
+        <Spinner
+            android:id="@+id/type_dep"
+            android:layout_width="160dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:drawSelectorOnTop="true"
+            android:layout_alignParentRight="true"/>
+        <!--//android:entries="@array/select_division_array" -->
+
+        <Spinner
+            android:id="@+id/type_div"
+            android:layout_width="160dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:drawSelectorOnTop="true"
+            android:layout_alignParentRight="true"/>
+        <!--android:entries="@array/select_division_array2"/>-->
+
+        <Spinner
+            android:id="@+id/type_name"
+            android:layout_width="160dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:drawSelectorOnTop="true"
+            android:layout_alignParentRight="true"/>
+        <!--android:entries="@array/select_division_array2"/>-->
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/shape_rectangle"
+            android:textColor="#FFFFFF"
+            android:text="確認" />
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

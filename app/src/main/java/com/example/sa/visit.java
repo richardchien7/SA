@@ -238,29 +238,10 @@ public class visit extends AppCompatActivity {
 
     public void setTextView() {
         Mon = findViewById(R.id.Mon);
-//        Mon0 = findViewById(R.id.Mon0);
-//        Mon1 = findViewById(R.id.Mon1);
-//        Mon2 = findViewById(R.id.Mon2);
-
         Tue = findViewById(R.id.Tue);
-//        Tue0 = findViewById(R.id.Tue0);
-//        Tue1 = findViewById(R.id.Tue1);
-//        Tue2 = findViewById(R.id.Tue2);
-
         Wed = findViewById(R.id.Wed);
-//        Wed0 = findViewById(R.id.Wed0);
-//        Wed1 = findViewById(R.id.Wed1);
-//        Wed2 = findViewById(R.id.Wed2);
-
         Thu = findViewById(R.id.Thu);
-//        Thu0 = findViewById(R.id.Thu0);
-//        Thu1 = findViewById(R.id.Thu1);
-//        Thu2 = findViewById(R.id.Thu2);
-
         Fri = findViewById(R.id.Fri);
-//        Fri0 = findViewById(R.id.Fri0);
-//        Fri1 = findViewById(R.id.Fri1);
-//        Fri2 = findViewById(R.id.Fri2);
 
 
     }

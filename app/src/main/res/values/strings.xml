@@ -42,4 +42,5 @@
         <item>9</item>
     </string-array>
     <string name="title_activity_res">res</string>
+    <string name="title_activity_doctor_info">doctor_info</string>
 </resources>

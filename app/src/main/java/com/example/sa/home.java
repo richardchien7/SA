@@ -21,6 +21,8 @@ public class home extends AppCompatActivity {
         Button sch = (Button) findViewById(R.id.schedule);
         Button individual = (Button)findViewById(R.id.individual);
         Button aboutsystem = (Button) findViewById(R.id.system_info);
+        Button doctor = (Button) findViewById(R.id.doctor_info);
+
 
 
 
@@ -70,6 +72,15 @@ public class home extends AppCompatActivity {
 
             }
         });
+        doctor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this,doctor_info.class);
+                startActivity(intent);
+
+            }
+        });
+
 
 
 
