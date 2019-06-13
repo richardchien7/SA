@@ -63,7 +63,7 @@ public class visit extends AppCompatActivity {
 
         //將兩天日期放進函式
 
-        getVis(dt,tdt,choose);
+        getVis(dt,tdt,choose,week_td);
 
         setNullWeek();
 
@@ -82,7 +82,7 @@ public class visit extends AppCompatActivity {
 
     }
 
-    public void getVis(final  Date  nw,final Date aw, final String choose){
+    public void getVis(final  Date  nw, final Date aw, final String choose, final int week_td){
         myAPIService = RetrofitManager.getInstance().getAPI();
         Call<visit_time> call = myAPIService.getVis();
 
@@ -129,7 +129,7 @@ public class visit extends AppCompatActivity {
 
                                 //抓出科室
                                 String division = response.body().getFields(i).getDivision_name()[j];
-                                if(division.equals(choose) ){
+                                if(division.equals(choose) && week_td <= week){
                                     //丟入此方法 print中
                                     print(week, time, date, doctor_name,id);
                                 }
@@ -316,23 +316,15 @@ public class visit extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(visit.this,visit_next.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
+                Intent intent = new Intent(visit.this,confirm.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
                 //Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
-                Bundle bundle_id = new Bundle();
-                bundle_id.putInt("id",id);
-                intent.putExtras(bundle_id);
-
-                Bundle bundle_doctor = new Bundle();
-                bundle_doctor.putString("doctor",txt);
-                intent.putExtras(bundle_doctor);
-
-                Bundle bundle_date = new Bundle();
-                bundle_date.putString("date",date);
-                intent.putExtras(bundle_date);
-
-                Bundle bundle_time = new Bundle();
-                bundle_time.putInt("time",time);
-                intent.putExtras(bundle_time);
+                Bundle bundle_confirm = new Bundle();
+                bundle_confirm.putInt("id",id);
+                bundle_confirm.putString("doctor",txt);
+                bundle_confirm.putString("date",date);
+                bundle_confirm.putInt("time",time);
+                intent.putExtras(bundle_confirm);
+                startActivity(intent);
 
 
 
