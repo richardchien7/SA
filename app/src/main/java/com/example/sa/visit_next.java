@@ -195,31 +195,31 @@ public class visit_next extends AppCompatActivity {
         if (week == 1) {
             Mon.setText(date1+"\n週一");
             if (time == 0){
-                createButton(dn,Mon0,id);
+                createButton(dn,Mon0,id,date,time);
             }
 
             else if (time == 1)
-                createButton(dn,Mon1,id);
+                createButton(dn,Mon1,id,date,time);
             else
-                createButton(dn,Mon2,id);
+                createButton(dn,Mon2,id,date,time);
         }
         else if (week == 2) {
             Tue.setText(date1+"\n週二");
             if (time == 0)
-                createButton(dn,Tue0,id);
+                createButton(dn,Tue0,id,date,time);
             else if (time == 1)
-                createButton(dn,Tue1,id);
+                createButton(dn,Tue1,id,date,time);
             else
-                createButton(dn,Tue2,id);
+                createButton(dn,Tue2,id,date,time);
         }
         else if (week == 3) {
             Wed.setText(date1+"\n週三");
             if (time == 0)
-                createButton(dn,Wed0,id);
+                createButton(dn,Wed0,id,date,time);
             else if (time == 1)
-                createButton(dn,Wed1,id);
+                createButton(dn,Wed1,id,date,time);
             else{
-                createButton(dn,Wed2,id);
+                createButton(dn,Wed2,id,date,time);
 
             }
 
@@ -227,22 +227,22 @@ public class visit_next extends AppCompatActivity {
         else if (week == 4) {
             Thu.setText(date1+"\n週四");
             if (time == 0)
-                createButton(dn,Thu0,id);
+                createButton(dn,Thu0,id,date,time);
             else if (time == 1)
-                createButton(dn,Thu1,id);
+                createButton(dn,Thu1,id,date,time);
             else
-                createButton(dn,Thu2,id);
+                createButton(dn,Thu2,id,date,time);
         }
         else if (week == 5) {
             Fri.setText(date1+"\n週五");
             if (time == 0){
-                createButton(dn,Fri0,id);
+                createButton(dn,Fri0,id,date,time);
             }
             else if (time == 1){
-              createButton(dn,Fri1,id);
+              createButton(dn,Fri1,id,date,time);
             }
             else{
-                createButton(dn,Fri2,id);
+                createButton(dn,Fri2,id,date,time);
 
             }
 
@@ -300,7 +300,7 @@ public class visit_next extends AppCompatActivity {
 
     }
 
-    private void createButton(String txt, LinearLayout view,final int id) {
+    private void createButton(final String txt, LinearLayout view,final int id,final String date,final int time) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -320,12 +320,15 @@ public class visit_next extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(visit_next.this,.class);
-//                Bundle bundle1 = new Bundle();
-//                bundle1.putString("division",choose);
-                //intent.putExtras(bundle1);
-                //startActivity(intent);
+                Intent intent = new Intent(visit_next.this,confirm.class);
+                //Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
+                Bundle bundle_confirm = new Bundle();
+                bundle_confirm.putInt("id",id);
+                bundle_confirm.putString("doctor",txt);
+                bundle_confirm.putString("date",date);
+                bundle_confirm.putInt("time",time);
+                intent.putExtras(bundle_confirm);
+                startActivity(intent);
 
             }
         });

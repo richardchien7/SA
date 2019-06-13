@@ -236,11 +236,7 @@
 
             </TableRow>
 
-            <Button
-                android:id="@+id/pass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上一週"/>
+
             <Button
                 android:id="@+id/next"
                 android:layout_width="wrap_content"
