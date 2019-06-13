@@ -56,7 +56,7 @@ private int num = 1;
 
         Bundle bundle =this.getIntent().getExtras();
         String Div_name = bundle.getString("Name");
-        String Doc_name = bundle.getString("Name");
+        String Doc_name = bundle.getString("doctor");
         String Office = bundle.getString("Name");
         String Date= bundle.getString("Name");
         String Period = bundle.getString("Name");

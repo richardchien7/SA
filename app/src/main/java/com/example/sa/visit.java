@@ -1,6 +1,7 @@
 package com.example.sa;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -316,6 +317,7 @@ public class visit extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
             }
         });
+
 
     }
 
