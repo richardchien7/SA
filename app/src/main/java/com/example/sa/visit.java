@@ -87,7 +87,7 @@ public class visit extends AppCompatActivity {
         call.enqueue(new Callback<visit_time>() {
             @Override
             public void onResponse(Call<visit_time> call, Response<visit_time> response) {
-
+                Toast.makeText(visit.this,"success",Toast.LENGTH_SHORT).show();
                 //抓到所有資料共有幾筆
                 int len = response.body().getRecords().length;
                 int i = 0;
@@ -151,6 +151,7 @@ public class visit extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<visit_time> call, Throwable t) {
+                Toast.makeText(visit.this,"fail",Toast.LENGTH_SHORT).show();
                 Mon.setText(t.getMessage());
 
             }

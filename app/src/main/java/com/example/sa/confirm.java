@@ -4,21 +4,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.jar.Attributes;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class confirm extends AppCompatActivity {
-private int num = 1;
+    private int num = 1;
     private MyAPIService MyAPIService;
 
     //接值
@@ -49,18 +46,16 @@ private int num = 1;
         String P_name = sharedPreferences.getString("patient_name" , null);
         //postRes("recXD2Gaj9GDjAd5e");
 
-        //接前一頁的值
-        //Bundle bundle =this.getIntent().getExtras();
-        //b的例子
-        String Name = "hello";
 
+        String Name = "hello";
+        //接前一頁的值
         Bundle bundle =this.getIntent().getExtras();
         String Div_name = bundle.getString("Name");
         String Doc_name = bundle.getString("Name");
         String Office = bundle.getString("Name");
         String Date= bundle.getString("Name");
         String Period = bundle.getString("Name");
-        String Num = bundle.getString("Name");
+        //String Num = bundle.getString("Name");
 
 
 
@@ -135,7 +130,7 @@ private int num = 1;
                     i++;
                 }
 
-                Req q = new Req(new fields(doctor,visit_time_id , patient_id, num, "finished"));
+                Req q = new Req(new fields(doctor, visit_time_id, patient_id, num, "unregistered"));
                 postReservation(q);
 
             }

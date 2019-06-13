@@ -61,7 +61,7 @@
                     android:id="@+id/Mon"
                     android:layout_width="75dp"
                     android:layout_height="80pt"
-                    android:textSize="10pt"
+                    android:textSize="5pt"
                     android:gravity="center" />
                 <LinearLayout
                     android:id="@+id/Mon0"

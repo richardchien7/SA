@@ -317,18 +317,18 @@ public class visit_next extends AppCompatActivity {
         b1.setLayoutParams(vlp);//设置TextView的布局
         view.addView(b1);//将TextView 添加到子View 中
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(visit_next.this,.class);
+//        b1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(visit_next.this,confirm.class);
 //                Bundle bundle1 = new Bundle();
 //                bundle1.putString("division",choose);
-                //intent.putExtras(bundle1);
-                //startActivity(intent);
-
-            }
-        });
+//                intent.putExtras(bundle1);
+//                startActivity(intent);
+//
+//            }
+//        });
 
     }
 
