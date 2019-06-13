@@ -153,7 +153,7 @@ public class confirm extends AppCompatActivity {
                 while (i < len) {
                     if (response.body().getFields(i).getVisit_time_id()[0].equals(V_id[0]) &&
                             response.body().getFields(i).getDoctor()[0].equals(Doc_name[0])) {
-                        num++;
+                        num = response.body().getFields(i).getNumber()+1;
                     }
                     i++;
                 }
