@@ -50,7 +50,7 @@ public interface MyAPIService {
                     "Accept: application/json; charset=utf-8",
                     "Content-Type: application/json; charset=utf-8"
             })
-    Call<Req> PostPatient(@Body Req fields);
+    Call<Reqregist> PostPatient(@Body Reqregist fields);
 
 
     @GET("visit_time?view=Grid%20view&api_key=keycPi0WBRNXVMtiW")

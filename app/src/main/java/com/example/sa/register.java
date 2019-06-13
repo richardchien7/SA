@@ -151,10 +151,10 @@ public class register extends AppCompatActivity {
     public void PostRegister(final String p_bithday,final String sex_tostring , final String p_name, final String p_ID, final String p_password, final String p_password_check, final String p_address, final String p_phone, final String p_emergencyname, final String p_emergencyrelation, final String p_emergencyphone){
 
         myAPIService = RetrofitManager.getInstance().getAPI();
-        Call<Req> call = myAPIService.PostPatient(new Req(new fields(p_ID, p_name, sex_tostring, p_birthday, p_phone, p_emergencyname, p_emergencyphone, p_emergencyrelation, p_password)));
-        call.enqueue(new Callback<Req>() {
+        Call<Reqregist> call = myAPIService.PostPatient(new Reqregist(new fieldsregist(p_ID, p_name, sex_tostring, p_birthday, p_phone, p_emergencyname, p_emergencyphone, p_emergencyrelation, p_password)));
+        call.enqueue(new Callback<Reqregist>() {
             @Override
-            public void onResponse(Call<Req> call, Response<Req> response) {
+            public void onResponse(Call<Reqregist> call, Response<Reqregist> response) {
                 ProgressDialogUtil.showProgressDialog(register.this);
                 Toast.makeText(register.this,"註冊成功!",Toast.LENGTH_SHORT).show();
 
@@ -164,7 +164,7 @@ public class register extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Req> call, Throwable t) {
+            public void onFailure(Call<Reqregist> call, Throwable t) {
                 Toast.makeText(register.this,"註冊失敗!",Toast.LENGTH_SHORT).show();
             }
         });
