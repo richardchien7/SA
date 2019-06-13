@@ -181,7 +181,8 @@ public class choose_division extends AppCompatActivity
         } else if (id == R.id.nav_ask) {
 
         } else if (id == R.id.nav_question) {
-
+            Intent intent = new Intent(choose_division.this, about_system.class);
+            startActivity(intent);
         } else if (id == R.id.nav_hospital) {
 
         } else if (id == R.id.nav_logout) {

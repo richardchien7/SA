@@ -127,10 +127,11 @@ public class visit_next extends AppCompatActivity {
                             while (j < qua)
                             {
                                 //獲取此看診時間id
-                                final int id = response.body().getFields(i).getVisit_id();
+                                String id = response.body().getId(i);
 
                                 //獲取醫生姓名
                                 String doctor_name = response.body().getFields(i).getDoctor_name()[j];
+                                String doctor_id = response.body().getFields(i).getDoctor_id()[j];
 
                                 //獲取診間號碼
                                 String office = response.body().getFields(i).getDoctor_office()[j];
@@ -139,7 +140,7 @@ public class visit_next extends AppCompatActivity {
                                 String division = response.body().getFields(i).getDivision_name()[j];
                                 if(division.equals(choose)){
                                     //丟入此方法 print中
-                                    print(week, time, date, doctor_name,id,office,division);
+                                    print(week, time, date, doctor_name,id,office,division,doctor_id);
                                 }
 
                                 j++;
@@ -170,7 +171,7 @@ public class visit_next extends AppCompatActivity {
 
 
 
-    public void print(int week,int time,String date,String dn,int id, String office,String division)
+    public void print(int week,int time,String date,String dn,String id, String office,String division,String doc_id)
     {
 
 
@@ -198,31 +199,31 @@ public class visit_next extends AppCompatActivity {
         if (week == 1) {
             Mon.setText(date1+"\n週一");
             if (time == 0){
-                createButton(dn,Mon0,id,date,time,office,division);
+                createButton(dn,Mon0,id,date,time,office,division,doc_id);
             }
 
             else if (time == 1)
-                createButton(dn,Mon1,id,date,time,office,division);
+                createButton(dn,Mon1,id,date,time,office,division,doc_id);
             else
-                createButton(dn,Mon2,id,date,time,office,division);
+                createButton(dn,Mon2,id,date,time,office,division,doc_id);
         }
         else if (week == 2) {
             Tue.setText(date1+"\n週二");
             if (time == 0)
-                createButton(dn,Tue0,id,date,time,office,division);
+                createButton(dn,Tue0,id,date,time,office,division,doc_id);
             else if (time == 1)
-                createButton(dn,Tue1,id,date,time,office,division);
+                createButton(dn,Tue1,id,date,time,office,division,doc_id);
             else
-                createButton(dn,Tue2,id,date,time,office,division);
+                createButton(dn,Tue2,id,date,time,office,division,doc_id);
         }
         else if (week == 3) {
             Wed.setText(date1+"\n週三");
             if (time == 0)
-                createButton(dn,Wed0,id,date,time,office,division);
+                createButton(dn,Wed0,id,date,time,office,division,doc_id);
             else if (time == 1)
-                createButton(dn,Wed1,id,date,time,office,division);
+                createButton(dn,Wed1,id,date,time,office,division,doc_id);
             else{
-                createButton(dn,Wed2,id,date,time,office,division);
+                createButton(dn,Wed2,id,date,time,office,division,doc_id);
 
             }
 
@@ -230,22 +231,22 @@ public class visit_next extends AppCompatActivity {
         else if (week == 4) {
             Thu.setText(date1+"\n週四");
             if (time == 0)
-                createButton(dn,Thu0,id,date,time,office,division);
+                createButton(dn,Thu0,id,date,time,office,division,doc_id);
             else if (time == 1)
-                createButton(dn,Thu1,id,date,time,office,division);
+                createButton(dn,Thu1,id,date,time,office,division,doc_id);
             else
-                createButton(dn,Thu2,id,date,time,office,division);
+                createButton(dn,Thu2,id,date,time,office,division,doc_id);
         }
         else if (week == 5) {
             Fri.setText(date1+"\n週五");
             if (time == 0){
-                createButton(dn,Fri0,id,date,time,office,division);
+                createButton(dn,Fri0,id,date,time,office,division,doc_id);
             }
             else if (time == 1){
-              createButton(dn,Fri1,id,date,time,office,division);
+              createButton(dn,Fri1,id,date,time,office,division,doc_id);
             }
             else{
-                createButton(dn,Fri2,id,date,time,office,division);
+                createButton(dn,Fri2,id,date,time,office,division,doc_id);
 
             }
 
@@ -303,7 +304,7 @@ public class visit_next extends AppCompatActivity {
 
     }
 
-    private void createButton(final String txt, LinearLayout view,final int id,final String date,final int time,final String office,final String division) {
+    private void createButton(final String txt, LinearLayout view,final String id,final String date,final int time,final String office,final String division,final String doc_id) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -326,8 +327,9 @@ public class visit_next extends AppCompatActivity {
                 Intent intent = new Intent(visit_next.this,confirm.class);
                 //Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
                 Bundle bundle_confirm = new Bundle();
-                bundle_confirm.putInt("id",id);
+                bundle_confirm.putString("id",id);
                 bundle_confirm.putString("doctor",txt);
+                bundle_confirm.putString("doctor_id",doc_id);
                 bundle_confirm.putString("date",date);
                 bundle_confirm.putInt("time",time);
                 bundle_confirm.putString("office",office);
