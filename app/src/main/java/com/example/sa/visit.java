@@ -1,10 +1,12 @@
 package com.example.sa;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -59,8 +61,9 @@ public class visit extends AppCompatActivity {
         //將加五天後的日期轉換為 年-月-日
         String wa =sdf.format(tdt);
 
-       // String choose = "心臟內科";
+
         //將兩天日期放進函式
+
         getVis(dt,tdt,choose,week_td);
 
         setNullWeek();
@@ -80,7 +83,7 @@ public class visit extends AppCompatActivity {
 
     }
 
-    public void getVis(final  Date  nw,final Date aw, final String choose,final int week_td){
+    public void getVis(final  Date  nw, final Date aw, final String choose, final int week_td){
         myAPIService = RetrofitManager.getInstance().getAPI();
         Call<visit_time> call = myAPIService.getVis();
 
@@ -113,6 +116,7 @@ public class visit extends AppCompatActivity {
                             //獲取此看診時間id
                             final int id = response.body().getFields(i).getVisit_id();
 
+
                             //抓到有幾名醫生排班
                             int qua = response.body().getFields(i).getDoctor_id().length;
                             int j = 0;
@@ -127,9 +131,12 @@ public class visit extends AppCompatActivity {
 
                                 //抓出科室
                                 String division = response.body().getFields(i).getDivision_name()[j];
-                                if(division.equals(choose) && week >= week_td){
+
+                                //獲取診間號碼
+                                String office = response.body().getFields(i).getDoctor_office()[j];
+                                if(division.equals(choose) && week_td <= week){
                                     //丟入此方法 print中
-                                    print(week, time, date, doctor_name,id);
+                                    print(week, time, date, doctor_name,id,office,division);
                                 }
 
                                 j++;
@@ -137,6 +144,7 @@ public class visit extends AppCompatActivity {
                             }
 
                         } catch (ParseException e) {
+
                             e.printStackTrace();
                         }
 
@@ -151,7 +159,7 @@ public class visit extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<visit_time> call, Throwable t) {
-                Mon.setText(t.getMessage());
+                Log.d("!!!",t.getMessage());
 
             }
         });
@@ -160,7 +168,7 @@ public class visit extends AppCompatActivity {
 
 
 
-    public void print(int week,int time,String date,String dn,int id)
+    public void print(int week,int time,String date,String dn,int id,String office,String division)
     {
 
 
@@ -188,31 +196,31 @@ public class visit extends AppCompatActivity {
         if (week == 1) {
             Mon.setText(date1+"\n週一");
             if (time == 0){
-                createButton(dn,Mon0,id);
+                createButton(dn,Mon0,id,date,time,office,division);
             }
 
             else if (time == 1)
-                createButton(dn,Mon1,id);
+                createButton(dn,Mon1,id,date,time,office,division);
             else
-                createButton(dn,Mon2,id);
+                createButton(dn,Mon2,id,date,time,office,division);
         }
         else if (week == 2) {
             Tue.setText(date1+"\n週二");
             if (time == 0)
-                createButton(dn,Tue0,id);
+                createButton(dn,Tue0,id,date,time,office,division);
             else if (time == 1)
-                createButton(dn,Tue1,id);
+                createButton(dn,Tue1,id,date,time,office,division);
             else
-                createButton(dn,Tue2,id);
+                createButton(dn,Tue2,id,date,time,office,division);
         }
         else if (week == 3) {
             Wed.setText(date1+"\n週三");
             if (time == 0)
-                createButton(dn,Wed0,id);
+                createButton(dn,Wed0,id,date,time,office,division);
             else if (time == 1)
-                createButton(dn,Wed1,id);
+                createButton(dn,Wed1,id,date,time,office,division);
             else{
-                createButton(dn,Wed2,id);
+                createButton(dn,Wed2,id,date,time,office,division);
 
             }
 
@@ -220,22 +228,22 @@ public class visit extends AppCompatActivity {
         else if (week == 4) {
             Thu.setText(date1+"\n週四");
             if (time == 0)
-                createButton(dn,Thu0,id);
+                createButton(dn,Thu0,id,date,time,office,division);
             else if (time == 1)
-                createButton(dn,Thu1,id);
+                createButton(dn,Thu1,id,date,time,office,division);
             else
-                createButton(dn,Thu2,id);
+                createButton(dn,Thu2,id,date,time,office,division);
         }
         else if (week == 5) {
             Fri.setText(date1+"\n週五");
             if (time == 0){
-                createButton(dn,Fri0,id);
+                createButton(dn,Fri0,id,date,time,office,division);
             }
             else if (time == 1){
-              createButton(dn,Fri1,id);
+              createButton(dn,Fri1,id,date,time,office,division);
             }
             else{
-                createButton(dn,Fri2,id);
+                createButton(dn,Fri2,id,date,time,office,division);
 
             }
 
@@ -293,7 +301,7 @@ public class visit extends AppCompatActivity {
 
     }
 
-    private void createButton(String txt, LinearLayout view,final int id) {
+    private void createButton(final String txt, LinearLayout view,final int id,final String date,final int time,final String office,final String division) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -313,9 +321,24 @@ public class visit extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(visit.this,confirm.class);   //連結選擇科別與醫生時段之button, for阿寶的時段及醫生
+                //Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
+                Bundle bundle_confirm = new Bundle();
+                bundle_confirm.putInt("id",id);
+                bundle_confirm.putString("doctor",txt);
+                bundle_confirm.putString("date",date);
+                bundle_confirm.putInt("time",time);
+                bundle_confirm.putString("office",office);
+                bundle_confirm.putString("division",division);
+                intent.putExtras(bundle_confirm);
+                startActivity(intent);
+
+
+
+
             }
         });
+
 
     }
 
