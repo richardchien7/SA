@@ -8,6 +8,7 @@ public class fieldsvisit {
     private int visit_id;
     private String[] division_name;
     private String[] doctor_name;
+    private String[] doctor_office;
 
     public String getDate() {
         return date;
@@ -35,5 +36,9 @@ public class fieldsvisit {
 
     public String[] getDivision_name() {
         return division_name;
+    }
+
+    public String[] getDoctor_office() {
+        return doctor_office;
     }
 }
