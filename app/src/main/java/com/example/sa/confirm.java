@@ -63,8 +63,8 @@ public class confirm extends AppCompatActivity {
         final String V_id1 = bundle.getString("id");
         final String[] V_id = {V_id1};
         String Div_name = bundle.getString("division");
-
-        final String Doc_name1 = bundle.getString("doctor");
+        final String Docname = bundle.getString("doctor");
+        final String Doc_name1 = bundle.getString("doctor_id");
         final String Doc_name[] = {Doc_name1};
 
         String Office = bundle.getString("office");
@@ -76,7 +76,7 @@ public class confirm extends AppCompatActivity {
         tv1.setText("預約門診: " + Div_name);
 
         TextView tv2 = (TextView) findViewById(R.id.textView2);
-        tv2.setText("看診醫師: " + Doc_name);
+        tv2.setText("看診醫師: " + Docname);
 
         TextView tv3 = (TextView) findViewById(R.id.textView3);
         tv3.setText("診間號碼: " + Office);
@@ -151,8 +151,8 @@ public class confirm extends AppCompatActivity {
                 //int num = 1;
                 int i = 0;
                 while (i < len) {
-                    if (response.body().getFields(i).getVisit_time_id().equals(visit_time_id) &&
-                            response.body().getFields(i).getDoctor().equals(doctor)) {
+                    if (response.body().getFields(i).getVisit_time_id()[0].equals(V_id[0]) &&
+                            response.body().getFields(i).getDoctor()[0].equals(Doc_name[0])) {
                         num++;
                     }
                     i++;
@@ -177,7 +177,7 @@ public class confirm extends AppCompatActivity {
         call.enqueue(new Callback<Reqconfirm>() {
             @Override
             public void onResponse(Call<Reqconfirm> call, Response<Reqconfirm> response) {
-                Toast.makeText(confirm.this, response.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(confirm.this, "預約成功!", Toast.LENGTH_SHORT).show();
 
             }
 

@@ -126,7 +126,9 @@ public class visit extends AppCompatActivity {
                             int num = 0;
                             while (j < qua) {
                                 //獲取醫生姓名
-                                String[] doctor_name = response.body().getFields(i).getDoctor_id();
+                                String[] doctor_name = response.body().getFields(i).getDoctor_name();
+
+                                String[] doctor_id = response.body().getFields(i).getDoctor_id();
 
                                 //抓出科室
                                 String division = response.body().getFields(i).getDivision_name()[j];
@@ -135,7 +137,7 @@ public class visit extends AppCompatActivity {
                                 String office = response.body().getFields(i).getDoctor_office()[j];
                                 if (division.equals(choose) && week_td <= week) {
                                     //丟入此方法 print中
-                                    print(week, time, date, doctor_name, id, office, division);
+                                    print(week, time, date, doctor_name, id, office, division,j,doctor_id);
                                 }
 
                                 j++;
@@ -164,7 +166,7 @@ public class visit extends AppCompatActivity {
     }
 
 
-    public void print(int week, int time, String date, String[] dn, String id, String office, String division) {
+    public void print(int week, int time, String date, String[] dn, String id, String office, String division,int position,String[] doc_id) {
 
 
         LinearLayout Mon0 = (LinearLayout) findViewById(R.id.Mon0);
@@ -190,46 +192,46 @@ public class visit extends AppCompatActivity {
         if (week == 1) {
             Mon.setText(date1 + "\n週一");
             if (time == 0) {
-                createButton(dn, Mon0, id, date, time, office, division);
+                createButton(dn, Mon0, id, date, time, office, division,position,doc_id);
             } else if (time == 1)
-                createButton(dn, Mon1, id, date, time, office, division);
+                createButton(dn, Mon1, id, date, time, office, division,position,doc_id);
             else
-                createButton(dn, Mon2, id, date, time, office, division);
+                createButton(dn, Mon2, id, date, time, office, division,position,doc_id);
         } else if (week == 2) {
             Tue.setText(date1 + "\n週二");
             if (time == 0)
-                createButton(dn, Tue0, id, date, time, office, division);
+                createButton(dn, Tue0, id, date, time, office, division,position,doc_id);
             else if (time == 1)
-                createButton(dn, Tue1, id, date, time, office, division);
+                createButton(dn, Tue1, id, date, time, office, division,position,doc_id);
             else
-                createButton(dn, Tue2, id, date, time, office, division);
+                createButton(dn, Tue2, id, date, time, office, division,position,doc_id);
         } else if (week == 3) {
             Wed.setText(date1 + "\n週三");
             if (time == 0)
-                createButton(dn, Wed0, id, date, time, office, division);
+                createButton(dn, Wed0, id, date, time, office, division,position,doc_id);
             else if (time == 1)
-                createButton(dn, Wed1, id, date, time, office, division);
+                createButton(dn, Wed1, id, date, time, office, division,position,doc_id);
             else {
-                createButton(dn, Wed2, id, date, time, office, division);
+                createButton(dn, Wed2, id, date, time, office, division,position,doc_id);
 
             }
 
         } else if (week == 4) {
             Thu.setText(date1 + "\n週四");
             if (time == 0)
-                createButton(dn, Thu0, id, date, time, office, division);
+                createButton(dn, Thu0, id, date, time, office, division,position,doc_id);
             else if (time == 1)
-                createButton(dn, Thu1, id, date, time, office, division);
+                createButton(dn, Thu1, id, date, time, office, division,position,doc_id);
             else
-                createButton(dn, Thu2, id, date, time, office, division);
+                createButton(dn, Thu2, id, date, time, office, division,position,doc_id);
         } else if (week == 5) {
             Fri.setText(date1 + "\n週五");
             if (time == 0) {
-                createButton(dn, Fri0, id, date, time, office, division);
+                createButton(dn, Fri0, id, date, time, office, division,position,doc_id);
             } else if (time == 1) {
-                createButton(dn, Fri1, id, date, time, office, division);
+                createButton(dn, Fri1, id, date, time, office, division,position,doc_id);
             } else {
-                createButton(dn, Fri2, id, date, time, office, division);
+                createButton(dn, Fri2, id, date, time, office, division,position,doc_id);
 
             }
 
@@ -285,7 +287,7 @@ public class visit extends AppCompatActivity {
 
     }
 
-    private void createButton(final String[] txt, LinearLayout view, final String id, final String date, final int time, final String office, final String division) {
+    private void createButton(final String[] txt, LinearLayout view, final String id, final String date, final int time, final String office, final String division,final int position,final String[] doc_id) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -316,7 +318,7 @@ public class visit extends AppCompatActivity {
             }
         });
 
-        b1.setText(txt[0]);
+        b1.setText(txt[position]);
         b1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.bt_border, 0, 0, 0);
         b1.setBackgroundColor(Color.WHITE);
         b1.setTextSize(20);
@@ -330,7 +332,8 @@ public class visit extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(),String.valueOf(id),Toast.LENGTH_SHORT).show();
                 Bundle bundle_confirm = new Bundle();
                 bundle_confirm.putString("id", id);
-                bundle_confirm.putString("doctor", txt[0]);
+                bundle_confirm.putString("doctor", txt[position]);
+                bundle_confirm.putString("doctor_id",doc_id[position]);
                 bundle_confirm.putString("date", date);
                 bundle_confirm.putInt("time", time);
                 bundle_confirm.putString("office", office);
