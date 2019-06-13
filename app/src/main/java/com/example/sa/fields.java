@@ -143,6 +143,11 @@ public class fields {
 
     private String[] visit_time_id;
     private String[] doctor;
+
+    public String[] getPatient_id() {
+        return patient_id;
+    }
+
     private String[] patient_id;
     private int Number;
     private String condition ;

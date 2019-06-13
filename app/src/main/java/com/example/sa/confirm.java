@@ -150,16 +150,32 @@ public class confirm extends AppCompatActivity {
                 int len = response.body().getRecords().length;
                 //int num = 1;
                 int i = 0;
+                boolean if_appointment = false;
                 while (i < len) {
-                    if (response.body().getFields(i).getVisit_time_id()[0].equals(V_id[0]) &&
-                            response.body().getFields(i).getDoctor()[0].equals(Doc_name[0])) {
-                        num = response.body().getFields(i).getNumber()+1;
+
+                    if(response.body().getFields(i).getPatient_id()[0].equals(patient_id[0]) &&response.body().getFields(i).getVisit_time_id()[0].equals(V_id[0]) &&
+                            response.body().getFields(i).getDoctor()[0].equals(Doc_name[0]))
+                    {
+                        Toast.makeText(confirm.this,"您已預約過此時段的此位醫生!",Toast.LENGTH_SHORT).show();
+                        if_appointment =true;
+                        break;
                     }
+
+                    else{
+                        if (response.body().getFields(i).getVisit_time_id()[0].equals(V_id[0]) &&
+                                response.body().getFields(i).getDoctor()[0].equals(Doc_name[0])) {
+                            num = response.body().getFields(i).getNumber()+1;
+                        }
+                    }
+
                     i++;
                 }
 
-                Reqconfirm q = new Reqconfirm(new fieldsconfirm(Doc_name, V_id, patient_id, num, "unregistered"));
-                postReservation(q);
+                if (if_appointment == false)
+                {
+                    Reqconfirm q = new Reqconfirm(new fieldsconfirm(Doc_name, V_id, patient_id, num, "unregistered"));
+                    postReservation(q);
+                }
 
             }
 
