@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -73,7 +74,7 @@ public class sch extends AppCompatActivity {
 
                         //定義好時間字串的格式
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+                        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
                         //抓到今天日期
                         Date dt = new Date();
 

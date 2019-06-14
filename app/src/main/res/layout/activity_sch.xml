@@ -7,6 +7,22 @@
     android:orientation="vertical"
     tools:context=".sch">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#508393"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="看 診 進 度"
+            app:titleMarginStart="140dp"/>
+
+
+    </android.support.design.widget.AppBarLayout>
     <ListView
         android:id="@+id/lv1"
         android:layout_width="wrap_content"
