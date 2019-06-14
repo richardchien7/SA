@@ -124,6 +124,8 @@ public class personalPage extends AppCompatActivity
             Intent intent = new Intent(personalPage.this, sch.class);
             startActivity(intent);
         } else if (id == R.id.nav_docInfo) {
+            Intent intent = new Intent(personalPage.this, doctor_info.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_hospital) {
 

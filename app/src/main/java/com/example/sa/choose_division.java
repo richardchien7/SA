@@ -173,8 +173,8 @@ public class choose_division extends AppCompatActivity
             Intent intent = new Intent(choose_division.this, sch.class);
             startActivity(intent);
         } else if (id == R.id.nav_docInfo) {
-//            Intent intent = new Intent(choose_division.this,home.class);  第三優先
-//            startActivity(intent);
+            Intent intent = new Intent(choose_division.this,doctor_info.class);
+            startActivity(intent);
         } else if (id == R.id.nav_personal) {
             Intent intent = new Intent(choose_division.this, personalPage.class);
             startActivity(intent);

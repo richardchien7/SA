@@ -181,8 +181,8 @@ public class doctor_info extends AppCompatActivity
             Intent intent = new Intent(doctor_info.this, sch.class);
             startActivity(intent);
         } else if (id == R.id.nav_docInfo) {
-//            Intent intent = new Intent(choose_division.this,home.class);  第三優先
-//            startActivity(intent);
+            Intent intent = new Intent(doctor_info.this,doctor_info.class);
+            startActivity(intent);
         } else if (id == R.id.nav_personal) {
             Intent intent = new Intent(doctor_info.this, personalPage.class);
             startActivity(intent);
