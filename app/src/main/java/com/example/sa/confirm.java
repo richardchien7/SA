@@ -132,7 +132,7 @@ public class confirm extends AppCompatActivity {
 
             Toast.makeText(confirm.this, "已取消預約", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
-            intent.setClass(confirm.this, choose_division.class);
+            intent.setClass(confirm.this, home.class);
             startActivity(intent);
 
         }
