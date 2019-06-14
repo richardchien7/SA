@@ -102,8 +102,8 @@
                 android:layout_height="114dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="3.看診進度 :可以查看自己的預約紀錄，當天可以查看看診進度。也可直接從此頁面取消預約，當天之看診無法做取消。 此功能也包含了看診提醒，您可以自行設定希望前幾號時做提醒。。"
+
+                android:text="3.看診進度 :可查看預約紀錄，可查看當天看診進度。也可直接從此頁取消預約，當天之看診無法取消。 此功能也包含看診提醒，您可自行設定希望前幾號時做提醒。"
                 android:textColor="#F80F0B0B"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
@@ -117,7 +117,7 @@
                 android:layout_width="343dp"
                 android:layout_height="161dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="8dp"
+
                 android:layout_marginBottom="8dp"
                 android:text="4.個人紀錄 : 在個人記錄當中有三個小功能。(1)服藥提醒 : 看診結束後，系統將會匯入藥單，可自行設定是否要做提醒，及設定提醒時間。(2)複診提醒 : 若有需要複診，系統自動帶入。也可自行設定提醒。    (3)病情紀錄 : 類似於日記，可以記錄您的血壓， 血糖等。"
                 android:textColor="#F80F0B0B"

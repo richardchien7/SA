@@ -136,7 +136,12 @@
                 android:layout_marginLeft="2.5dp"
                 android:layout_marginRight="2.5dp"
                 />
-
+<TextView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:text=""
+    android:layout_below="@id/system_info"
+    android:textSize="50dp"/>
 
 
 

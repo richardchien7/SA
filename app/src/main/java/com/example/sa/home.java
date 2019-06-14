@@ -61,7 +61,6 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(home.this,personalPage.class);
                 startActivity(intent);
-
             }
         });
         aboutsystem.setOnClickListener(new View.OnClickListener() {
